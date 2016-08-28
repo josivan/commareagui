@@ -5,7 +5,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 public abstract class EditablePanel extends JPanel implements ActionListener, HasJsonData {
@@ -23,12 +25,13 @@ public abstract class EditablePanel extends JPanel implements ActionListener, Ha
         this.btnSave.addActionListener(this);
     }
     
-    private JPanel panelButtons() {
-        return new JPanel(){{
-            setLayout(new GridLayout(1, 2, 5, 5));
-            add(btnSave);
-            add(btnClose);
-        }};
+    private JComponent panelButtons() {
+      Box box = Box.createHorizontalBox();
+      box.add(Box.createHorizontalGlue());
+      box.add(this.btnSave);
+      box.add(Box.createHorizontalStrut(5));
+      box.add(this.btnClose);
+      return box;
     }
 
     public void actionPerformed(ActionEvent e) {

@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileReader;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -23,7 +25,7 @@ public class MainFrame extends JFrame implements ActionListener {
     private ProjectEdition project = new ProjectEdition();
     
     MainFrame() {
-        setTitle("Geração de CommArea");
+        setTitle("GeraÃ§Ã£o de CommArea");
         setSize(300, 300);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 //        pack();
@@ -37,10 +39,13 @@ public class MainFrame extends JFrame implements ActionListener {
     
     private JPanel mainLayout() {
         JPanel panel = new JPanel(new BorderLayout(5, 5));
-        JPanel pb = new JPanel(new GridLayout(1, 2, 5, 5));
-        pb.add(btnNew);
-        pb.add(btnOpen);
-        panel.add(pb, BorderLayout.NORTH);
+        panel.setBorder(BorderFactory.createEmptyBorder(12, 12, 11, 11));
+        JPanel pb = new JPanel();
+        Box box = Box.createHorizontalBox();
+        box.add(btnNew);
+        box.add(Box.createHorizontalStrut(5));
+        box.add(btnOpen);
+        panel.add(box, BorderLayout.NORTH);
         return panel;
     }
     

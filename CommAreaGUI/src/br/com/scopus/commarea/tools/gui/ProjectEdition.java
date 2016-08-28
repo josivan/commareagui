@@ -65,7 +65,7 @@ public class ProjectEdition extends EditablePanel {
     protected JPanel conteudo() {
         JPanel main = new JPanel(new BorderLayout(5, 5));
         JPanel p = new JPanel(new SpringLayout());
-        String[] labels = {"Nome: ", "Pacote Padr„o: ", "Pasta: "};
+        String[] labels = {"Nome: ", "Pacote Padr√£o: ", "Pasta: "};
         
         for (int i = 0; i < labels.length; i++) {
             JLabel l = new JLabel(labels[i], JLabel.TRAILING);
