@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Josivan primeira página</h1>
+    <script>
+      'use strict';
+
+      const fs = require('fs');
+      let files = fs.readdirSync('.settings');
+
+      files.forEach(fileName => {
+        let element = document.createElement('p');
+        element.textContent = fileName;
+        document.body.appendChild(element);
+      });
+    </script>
+  </body>
+</html>

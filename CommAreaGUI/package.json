@@ -1,0 +1,8 @@
+{
+  "name": "commareagui",
+  "version": "1.0.0",
+  "description": "Learning electron",
+  "main": "main.js",
+  "author": "Josivan de Souza",
+  "license": "MIT"
+}
