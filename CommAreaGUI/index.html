@@ -2,17 +2,24 @@
 <html>
   <body>
     <h1>Josivan primeira página</h1>
+    <button id="novo">Novo</button>
+    <button>Abrir</button>
+
     <script>
       'use strict';
 
       const fs = require('fs');
-      let files = fs.readdirSync('.settings');
+      let files = fs.readdirSync('src');
 
       files.forEach(fileName => {
         let element = document.createElement('p');
         element.textContent = fileName;
         document.body.appendChild(element);
       });
+
+      document.getElementById("novo").onclick = function() {
+        console.log('Novo clicado');
+      };
     </script>
   </body>
 </html>

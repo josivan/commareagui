@@ -4,5 +4,9 @@
   "description": "Learning electron",
   "main": "main.js",
   "author": "Josivan de Souza",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/josivan/commareagui"
+  }
 }
