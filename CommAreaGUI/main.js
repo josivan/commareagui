@@ -9,6 +9,10 @@ const BrowserWindow = electron.BrowserWindow;
 //const globalShortcut = electron.globalShortcut;
 //const ipcMain = electron.ipcMain;
 
+const remote = electron.remote;
+
+//const mainProcess = remote.require('main.js');
+
 let window = null;
 
 app.on('ready', () => {

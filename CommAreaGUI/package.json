@@ -5,8 +5,13 @@
   "main": "main.js",
   "author": "Josivan de Souza",
   "license": "MIT",
+  
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/josivan/commareagui"
+  },
+  
+  "dependencies": {
+    "bootstrap": "^3.3.7"
   }
 }
