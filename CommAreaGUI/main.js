@@ -1,6 +1,7 @@
 'use strict';
 
 const electron = require('electron');
+const menu = require('./components/menu.app.js');
 
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
@@ -21,5 +22,6 @@ app.on('ready', () => {
     heigth: 600,
     width: 800
   });
-  window.loadURL(`file://${__dirname}/index.html`); 
+  window.setMenu(menu);
+  window.loadURL(`file://${__dirname}/app/index.html`); 
 });
