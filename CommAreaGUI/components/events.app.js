@@ -2,7 +2,13 @@ const {ipcMain} = require('electron');
 
 ipcMain.on('save-project', (event, arg) => {
   console.log('salvando no main');
-  event.returnValue = 'Salvo com sucesso';
+  console.log(arg);
+  if (saveFile(arg)) {
+    event.returnValue = 'Salvo com sucesso';
+  }
+  else {
+    event.returnValue = 'Falhou ao salvar';
+  }
 });
 
 ipcMain.on('save-project-async', (event, arg) => {
@@ -20,3 +26,9 @@ ipcMain.on('open-project', (event, arg) => {
     caminho: 'Algum lugar'
   };
 });
+
+var saveFile = (arg) => {
+  console.log('vou gerar um arquivo');
+  console.log(arg);
+  return false;
+}

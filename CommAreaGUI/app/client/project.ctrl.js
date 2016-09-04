@@ -12,6 +12,8 @@ ProjectController.$inject = [
 function ProjectController($location, $timeout, ipcRenderer, EventsServices) {
   var vm = this;
 
+  vm.data = {};
+
   vm.newProject = () => {
     console.log('novo projeto no controller');
     $location.path('/novo');
@@ -30,6 +32,8 @@ function ProjectController($location, $timeout, ipcRenderer, EventsServices) {
 
   vm.save = () => {
     console.log('salvando...');
+    var result = ipcRenderer.sendSync('save-project', vm.data);
+    console.log(result);
   };
 
   ipcRenderer.on('novo-no-fe', (event, arg) => {
