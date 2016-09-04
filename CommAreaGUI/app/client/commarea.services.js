@@ -1,6 +1,7 @@
 angular
   .module('commarea.services', [])
-  .service('EventsServices', EventsServices);
+  .service('EventsServices', EventsServices)
+  .service('NavigationService', NavigationService);
 
 EventsServices.$inject = ['ipcRenderer'];
 function EventsServices(ipcRenderer) {
@@ -9,5 +10,14 @@ function EventsServices(ipcRenderer) {
     console.log('voltou da assincrona');
     console.log(arg);
   });
+}
 
+NavigationService.$inject = ['$location'];
+function NavigationService($location) {
+  return {
+    novo : () => {
+      console.log('novo em NavigationService');
+      $location.path('novo');
+    }
+  };
 }

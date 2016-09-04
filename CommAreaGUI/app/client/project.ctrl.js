@@ -12,16 +12,29 @@ function ProjectController($location, ipcRenderer, EventsServices) {
   var vm = this;
 
   vm.newProject = () => {
-    console.log('Novo projeto no controller');
-    var result = ipcRenderer.sendSync('save-project');
-    console.log(result);
-    ipcRenderer.send('save-project-async', 'chamada assincrona');
-    //$location.path('novo');
+    console.log('novo projeto no controller');
+    $location.path('/novo');
   };
 
   vm.openProject = () => {
     console.log('Abrir projeto no controller');
-    var result = ipcRenderer.sendSync('open-project');
-    console.log(result);
-  }
+    //var result = ipcRenderer.sendSync('open-project');
+    //console.log(result);
+    vm.newProject();
+  };
+
+  vm.cancel = () => {
+    console.log('fechando...');
+    $location.path('/');
+  };
+
+  vm.save = () => {
+    console.log('salvando...');
+  };
+
+  ipcRenderer.on('novo-no-fe', (event, arg) => {
+    console.log(arg);
+    console.log('vou fazer algo no fe depois de clicar no novo via menu', 'dentro do controllador de projeto');
+    vm.newProject();
+  });
 }

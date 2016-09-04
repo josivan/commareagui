@@ -10,6 +10,26 @@
           <input type="text" class="form-control" id="prjName" placeholder="Nome do Projeto">
         </div>
       </div>
+      <div class="form-group">
+        <label for="prjName" class="col-sm-2 control-label">Pacote</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="prjPackage" placeholder="Pacote Padrão">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="prjName" class="col-sm-2 control-label">Pasta</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="prjPath" placeholder="Caminho Padrão">
+        </div>
+      </div>  
+      <div class="pull-right">
+        <div class="btn-group">
+          <button id="btnSave" class="btn btn-default" ng-click="project.save()">Salvar</button>
+        </div>
+        <div class="btn-group">
+          <button id="btnCancel" class="btn btn-default" ng-click="project.cancel()">Cancelar</button>
+        </div>    
+      </div>
     </form>
   </div>
 </div>

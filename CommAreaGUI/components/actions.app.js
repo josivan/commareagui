@@ -1,18 +1,12 @@
-const electron = require('electron'); 
-const ipcRenderer = electron.ipcRenderer;
-
-exports.actionNew = () => {
-  console.log('Clicado em Novo');
-
-  /*
-  if (process.type == 'renderer') {
-    console.log(ipcRenderer.sendSync('click-novo', 'Cliquei no botão novo...' ));
-  }
-  */
+exports.actionNew = (menuItem, browserWindow, event) => {
+  console.log('Clicado em Novo no main');
+  console.log('type', process.type);
+  browserWindow.webContents.send('novo-no-fe', 'sendo chamado a partir do main');
 }
 
 exports.actionOpen = () => {
-  console.log('Clicado em Abrir');
+  console.log('Clicado em Abrir no main');
+  console.log(process.type);
 }
 
 exports.actionExit = () => {
