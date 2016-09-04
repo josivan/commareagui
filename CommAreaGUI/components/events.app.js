@@ -1,4 +1,5 @@
 const {ipcMain} = require('electron');
+const fu = require('./filecreator.app.js');
 
 ipcMain.on('save-project', (event, arg) => {
   console.log('salvando no main');
@@ -30,5 +31,6 @@ ipcMain.on('open-project', (event, arg) => {
 var saveFile = (arg) => {
   console.log('vou gerar um arquivo');
   console.log(arg);
-  return false;
+  fu.criar(arg); 
+  return true;
 }
