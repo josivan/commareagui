@@ -1,4 +1,4 @@
-const  electron = require('electron');
+const electron = require('electron'); 
 const ipcRenderer = electron.ipcRenderer;
 
 var actionNew = function() {
@@ -8,6 +8,10 @@ var actionNew = function() {
 
 var actionOpen = function() {
   console.log('Clicado em Abrir');
+}
+
+var actionExit = function() {
+  console.log('vou sair');
 }
 
 const actions =  {

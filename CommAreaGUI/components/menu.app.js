@@ -1,25 +1,31 @@
-const  electron = require('electron');
+const electron = require('electron');
+const ev = require('./events.app.js');
 
 const template = [
   {
-    label: 'Projeto',
+    label: '&Projeto',
     submenu: [
       {
-        label: 'Novo'
+        label: '&Novo',
+        accelerator: 'CmdOrCtrl+N'
       },
       {
-        label: 'Abrir'
+        label: '&Abrir',
+        accelerator: 'CmdOrCtrl+A',
+        click: ev.actionOpen
       },
       {
         type: 'separator'
       },
       {
-        label: 'Sair'
+        label: '&Sair',
+        role: 'quit',
+        accelerator: 'Alt+F4'
       }
     ]
   },
   {
-    label: 'Ferramentas'
+    label: '&Ferramentas'
   }
 ];
 

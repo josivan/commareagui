@@ -5,13 +5,18 @@
     <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" >
   </head>
   <body>
-    <h1>Commarea GUI</h1>
-    <button id="btnNovo">Novo</button>
-    <button id="btnAbrir">Abrir</button>
+    <div class="container">
+      <div class="page-header">
+        <h1>Commarea GUI - <small>Ferramenta para geração de PDC</small></h1>
+      </div>
+      <button id="btnNovo" class="btn btn-default">Novo</button>
+      <button id="btnAbrir" class="btn btn-default">Abrir</button>
+    </div>
 
     <script>
       'use strict';
 
+      //const angular = require('angular');
       const fs = require('fs');
       const events = require('../components/events.app.js');
       let files = fs.readdirSync('src');
