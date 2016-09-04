@@ -9,6 +9,12 @@ const template = [
       },
       {
         label: 'Abrir'
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Sair'
       }
     ]
   },
