@@ -22,6 +22,6 @@ app.on('ready', () => {
     heigth: 600,
     width: 800
   });
-  window.setMenu(menu);
+  //window.setMenu(menu);
   window.loadURL(`file://${__dirname}/app/index.html`); 
 });
