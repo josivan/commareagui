@@ -1,22 +1,22 @@
-const electron = require('electron'); 
-const ipcRenderer = electron.ipcRenderer;
+const {ipcMain} = require('electron');
 
-var actionNew = function() {
-  console.log('Clicado em Novo');
-  console.log(ipcRenderer.sendSync('click-novo', 'Cliquei no botão novo...' ));
-}
+ipcMain.on('save-project', (event, arg) => {
+  console.log('salvando no main');
+  event.returnValue = 'Salvo com sucesso';
+});
 
-var actionOpen = function() {
-  console.log('Clicado em Abrir');
-}
+ipcMain.on('save-project-async', (event, arg) => {
+  console.log(arg);
+  event.sender.send('file-saved', {
+    project: 'Projeto',
+    caminho: 'assincrono'
+  })
+});
 
-var actionExit = function() {
-  console.log('vou sair');
-}
-
-const actions =  {
-  actionNew: actionNew,
-  actionOpen: actionOpen
-}
-
-module.exports = actions;
+ipcMain.on('open-project', (event, arg) => {
+  console.log('abrindo no main');
+  event.returnValue = {
+    name: 'Projeto',
+    caminho: 'Algum lugar'
+  };
+});

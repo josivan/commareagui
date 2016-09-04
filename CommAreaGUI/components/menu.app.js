@@ -1,5 +1,5 @@
 const electron = require('electron');
-const ev = require('./events.app.js');
+const actions = require('./actions.app.js');
 
 const template = [
   {
@@ -7,12 +7,13 @@ const template = [
     submenu: [
       {
         label: '&Novo',
-        accelerator: 'CmdOrCtrl+N'
+        accelerator: 'CmdOrCtrl+N',
+        click: actions.actionNew
       },
       {
         label: '&Abrir',
         accelerator: 'CmdOrCtrl+A',
-        click: ev.actionOpen
+        click: actions.actionOpen
       },
       {
         type: 'separator'
@@ -25,7 +26,12 @@ const template = [
     ]
   },
   {
-    label: '&Ferramentas'
+    label: '&Ferramentas',
+    submenu: [
+      {
+        label: '&Opções'
+      }
+    ]
   }
 ];
 

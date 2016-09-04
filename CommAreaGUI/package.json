@@ -12,8 +12,11 @@
     "type": "git",
     "url": "https://bitbucket.org/josivan/commareagui"
   },
-  
   "dependencies": {
+    "angular": "^1.5.8",
+    "angular-electron": "^0.2.1",
+    "angular-resource": "^1.5.8",
+    "angular-route": "^1.5.8",
     "bootstrap": "^3.3.7"
   },
   "devDependencies": {

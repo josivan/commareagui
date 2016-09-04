@@ -2,6 +2,7 @@
 
 const electron = require('electron');
 const menu = require('./components/menu.app.js');
+require('./components/events.app.js');
 
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
