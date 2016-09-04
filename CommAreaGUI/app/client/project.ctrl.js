@@ -4,11 +4,12 @@ angular
 
 ProjectController.$inject = [
   '$location',
+  '$timeout',
   'ipcRenderer',
   'EventsServices'
 ];
 
-function ProjectController($location, ipcRenderer, EventsServices) {
+function ProjectController($location, $timeout, ipcRenderer, EventsServices) {
   var vm = this;
 
   vm.newProject = () => {
@@ -20,7 +21,6 @@ function ProjectController($location, ipcRenderer, EventsServices) {
     console.log('Abrir projeto no controller');
     //var result = ipcRenderer.sendSync('open-project');
     //console.log(result);
-    vm.newProject();
   };
 
   vm.cancel = () => {
@@ -35,6 +35,6 @@ function ProjectController($location, ipcRenderer, EventsServices) {
   ipcRenderer.on('novo-no-fe', (event, arg) => {
     console.log(arg);
     console.log('vou fazer algo no fe depois de clicar no novo via menu', 'dentro do controllador de projeto');
-    vm.newProject();
+    $timeout(vm.newProject());
   });
 }
