@@ -10,14 +10,20 @@ const BrowserWindow = electron.BrowserWindow;
 let window = null;
 
 app.on('ready', () => {
-  console.log('Hello from Electron');
   window = new BrowserWindow({
     heigth: 600,
-    width: 800
+    width: 800,
+    center: true
   });
   window.setMenu(menu);
   window.loadURL(`file://${__dirname}/app/index.html`); 
   window.openDevTools();
+
+  /*
+  window.on('page-title-updated', (event, title) => {
+    event.preventDefault();
+  });
+  */
 
   window.on('closed', () => {
     window = null;
