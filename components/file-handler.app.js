@@ -5,3 +5,8 @@ exports.criar = (arg) => {
   var ws = fs.createWriteStream(fileName);
   ws.write(JSON.stringify(arg));
 };
+
+exports.abrir = (arg) => {
+  var file = fs.readFileSync(arg, 'utf8');
+  return JSON.parse(file);
+};

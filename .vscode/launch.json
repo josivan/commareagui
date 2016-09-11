@@ -2,7 +2,27 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Electron",
+      "name": "Launch Electron Linux",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/main.js",
+      "stopOnEntry": false,
+      "args": [],
+      "cwd": "${workspaceRoot}",
+      "preLaunchTask": null,
+      "runtimeExecutable": "/usr/bin/electron",
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "externalConsole": false,
+      "sourceMaps": false,
+      "outDir": null
+    },
+    {
+      "name": "Launch Electron Windows",
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/main.js",

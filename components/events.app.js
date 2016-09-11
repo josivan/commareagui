@@ -1,5 +1,5 @@
 const {ipcMain} = require('electron');
-const fu = require('./filecreator.app.js');
+const fh = require('./file-handler.app.js');
 
 ipcMain.on('save-project', (event, arg) => {
   console.log('salvando no main');
@@ -21,16 +21,11 @@ ipcMain.on('save-project-async', (event, arg) => {
 });
 
 ipcMain.on('open-project', (event, arg) => {
-  console.log('abrindo no main');
-  event.returnValue = {
-    name: 'Projeto',
-    caminho: 'Algum lugar'
-  };
+  event.returnValue = fh.abrir(arg);
 });
 
 var saveFile = (arg) => {
-  console.log('vou gerar um arquivo');
   console.log(arg);
-  fu.criar(arg); 
+  fh.criar(arg); 
   return true;
 }

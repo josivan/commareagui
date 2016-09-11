@@ -6,39 +6,56 @@ ProjectController.$inject = [
   '$location',
   '$timeout',
   'ipcRenderer',
-  'EventsServices'
+  'BrowserWindow',
+  'dialog',
+  'ProjectService'
 ];
 
-function ProjectController($location, $timeout, ipcRenderer, EventsServices) {
+function ProjectController($location, $timeout, ipcRenderer, BrowserWindow, dialog, ProjectService) {
   var vm = this;
 
-  vm.data = {};
+  vm.data = ProjectService.getData();
 
   vm.newProject = () => {
-    console.log('novo projeto no controller');
-    $location.path('/novo');
+    vm.data.action = 'Novo';
+    ProjectService.setData(vm.data);
+    $location.path('novo');
   };
 
   vm.openProject = () => {
-    console.log('Abrir projeto no controller');
-    //var result = ipcRenderer.sendSync('open-project');
-    //console.log(result);
+    var fileToOpen = dialog.showOpenDialog(BrowserWindow.getFocusedWindow(), 
+      {
+        title: 'Abrir um Projeto Existente',
+        defaultPath: '.',
+        properties: [
+          'openFile'
+        ],
+        filters: [{
+          name: 'Projetos Comm Area',
+          extensions: ['caproject']
+        }]
+      });
+      var result = ipcRenderer.sendSync('open-project', fileToOpen[0]);
+      vm.data = result;
+      vm.data.action = 'Editar';
+      ProjectService.setData(vm.data);
+      $location.path('/novo');
   };
 
   vm.cancel = () => {
-    console.log('fechando...');
     $location.path('/');
   };
 
   vm.save = () => {
-    console.log('salvando...');
     var result = ipcRenderer.sendSync('save-project', vm.data);
-    console.log(result);
+    vm.cancel();
   };
 
-  ipcRenderer.on('novo-no-fe', (event, arg) => {
-    console.log(arg);
-    console.log('vou fazer algo no fe depois de clicar no novo via menu', 'dentro do controllador de projeto');
+  ipcRenderer.on('new-project', (event, arg) => {
     $timeout(vm.newProject());
+  });
+
+  ipcRenderer.on('open-project', (event, arg) => {
+    $timeout(vm.openProject());
   });
 }
