@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Electron Linux",
+      "name": "Launch Electron",
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/main.js",
@@ -10,36 +10,20 @@
       "args": [],
       "cwd": "${workspaceRoot}",
       "preLaunchTask": null,
-      "runtimeExecutable": "/usr/bin/electron",
       "runtimeArgs": [
         "--nolazy"
       ],
       "env": {
         "NODE_ENV": "development"
       },
-      "externalConsole": false,
       "sourceMaps": false,
-      "outDir": null
-    },
-    {
-      "name": "Launch Electron Windows",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceRoot}/main.js",
-      "stopOnEntry": false,
-      "args": [],
-      "cwd": "${workspaceRoot}",
-      "preLaunchTask": null,
-      "runtimeExecutable": "C:/Users/josivan/AppData/Roaming/npm/node_modules/electron-prebuilt/dist/electron.exe",
-      "runtimeArgs": [
-        "--nolazy"
-      ],
-      "env": {
-        "NODE_ENV": "development"
+      "outDir": null,
+      "linux": {
+        "runtimeExecutable": "/usr/bin/electron"
       },
-      "externalConsole": false,
-      "sourceMaps": false,
-      "outDir": null
+      "windows": {
+        "runtimeExecutable": "${env.APPDATA}/npm/node_modules/electron-prebuilt/dist/electron.exe"        
+      }
     },
     {
       "name": "Attach",
