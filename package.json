@@ -10,13 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/josivan/commareagui"
+    "url": "https://github.com/josivan/commareagui"
   },
   "dependencies": {
     "angular": "^1.5.8",
     "angular-electron": "^0.2.1",
     "angular-resource": "^1.5.8",
     "angular-route": "^1.5.8",
+    "angular-ui-bootstrap": "^2.1.3",
     "bootstrap": "^3.3.7",
     "node-java": "^1.0.1"
   },

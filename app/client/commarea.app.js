@@ -1,5 +1,6 @@
 var app = angular
   .module('commarea', [
+    'ui.bootstrap',
     'commarea.routes',
     'commarea.core',
     'commarea.services'

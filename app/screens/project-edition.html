@@ -7,19 +7,26 @@
       <div class="form-group">
         <label for="prjName" class="col-sm-2 control-label">Nome</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="prjName" placeholder="Nome do Projeto" ng-model="project.data.prjName">
+          <input type="text" class="form-control" id="prjName" placeholder="Nome do Projeto" ng-model="project.data.prjName" 
+            uib-tooltip="Nome projeto que será usado no arquivo de definição. Não pode ser alterado."
+            ng-hide="project.data.action == 'Editar'">
+          <p uib-tooltip="Nome projeto que será usado no arquivo de definição. Não pode ser alterado."
+            ng-show="project.data.action == 'Editar'"
+            class="form-control-static">{{project.data.prjName}}</p>
         </div>
       </div>
       <div class="form-group">
         <label for="prjName" class="col-sm-2 control-label">Pacote</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="prjPackage" placeholder="Pacote Padrão" ng-model="project.data.prjPackage">
+          <input type="text" class="form-control" id="prjPackage" placeholder="Pacote Padrão" ng-model="project.data.prjPackage"
+            uib-tooltip="O pacote padrão a ser usado nos stubs gerados.">
         </div>
       </div>
       <div class="form-group">
         <label for="prjName" class="col-sm-2 control-label">Pasta</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="prjPath" placeholder="Caminho Padrão" ng-model="project.data.prjPath">
+          <p class="form-control-static" ng-click="project.selectPath()"
+            uib-tooltip="O caminho no sistema de arquivos para geração dos stubs. Clique para selecionar.">{{project.data.prjPath ? project.data.prjPath : 'Não definido'}}</p>
         </div>
       </div>  
       <div class="pull-right">
