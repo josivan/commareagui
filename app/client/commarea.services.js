@@ -1,8 +1,7 @@
 angular
   .module('commarea.services', [])
   .service('EventsServices', EventsServices)
-  .service('NavigationService', NavigationService)
-  .service('ProjectService', ProjectService);
+  .service('NavigationService', NavigationService);
 
 EventsServices.$inject = ['ipcRenderer'];
 function EventsServices(ipcRenderer) {
@@ -21,16 +20,4 @@ function NavigationService($location) {
       $location.path('novo');
     }
   };
-}
-
-function ProjectService() {
-  var _data = {};
-
-  this.getData = () => {
-    return _data;
-  };
-
-  this.setData = (data) => {
-    _data = data;
-  }
 }

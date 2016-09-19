@@ -1,5 +1,5 @@
 angular
-  .module('commarea.core')
+  .module('commarea.controllers')
   .controller('ProjectController', ProjectController);
 
 ProjectController.$inject = [
@@ -53,11 +53,9 @@ function ProjectController($location, $timeout, ipcRenderer, BrowserWindow, dial
   }
 
   vm.addFields = () => {
-    console.log('adicionar campos', 'chamando uma unica vez');
   }
 
   vm.save = () => {
-    console.log('chamando o save no controller');
     var result = ipcRenderer.sendSync('save-project', vm.data);
     vm.data.action = 'Editar';
     vm.data.editionMode = true;

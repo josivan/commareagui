@@ -3,7 +3,8 @@ var app = angular
     'ui.bootstrap',
     'commarea.routes',
     'commarea.core',
-    'commarea.services'
+    'commarea.services',
+    'commarea.controllers'
   ]);
 
 //app.run(init);

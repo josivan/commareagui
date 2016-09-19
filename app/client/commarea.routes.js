@@ -13,6 +13,10 @@ function routes($routeProvider) {
       templateUrl: 'screens/project-edition.html',
       controller: 'ProjectController as pc'
     })
+    .when('/fields', {
+      templateUrl: 'screens/fields-edition.html',
+      controller: 'FieldController as fc'
+    })
     .otherwise({
       redirectTo: '/welcome'
     });

@@ -1,0 +1,2 @@
+angular
+  .module('commarea.controllers', []);
