@@ -11,8 +11,7 @@ function routes($routeProvider) {
     })
     .when('/novo', {
       templateUrl: 'screens/project-edition.html',
-      controller: 'ProjectController',
-      controllerAs: 'project'
+      controller: 'ProjectController as pc'
     })
     .otherwise({
       redirectTo: '/welcome'

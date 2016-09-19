@@ -23,7 +23,7 @@ function ProjectController($location, $timeout, ipcRenderer, BrowserWindow, dial
     };
     ProjectService.setData(vm.data);
     $location.path('novo');
-  };
+  }
 
   vm.openProject = () => {
     var fileToOpen = dialog.showOpenDialog(BrowserWindow.getFocusedWindow(), 
@@ -42,19 +42,26 @@ function ProjectController($location, $timeout, ipcRenderer, BrowserWindow, dial
       if (fileToOpen) {
         vm.data = ipcRenderer.sendSync('open-project', fileToOpen[0]);
         vm.data.action = 'Editar';
+        vm.data.editionMode = true;
         ProjectService.setData(vm.data);
         $location.path('/novo');
       }
-  };
+  }
 
   vm.cancel = () => {
     $location.path('/');
-  };
+  }
+
+  vm.addFields = () => {
+    console.log('adicionar campos', 'chamando uma unica vez');
+  }
 
   vm.save = () => {
+    console.log('chamando o save no controller');
     var result = ipcRenderer.sendSync('save-project', vm.data);
-    vm.cancel();
-  };
+    vm.data.action = 'Editar';
+    vm.data.editionMode = true;
+  }
 
   vm.selectPath = () => {
     var selectedPath = dialog.showOpenDialog(BrowserWindow.getFocusedWindow(), 
@@ -74,11 +81,11 @@ function ProjectController($location, $timeout, ipcRenderer, BrowserWindow, dial
     }
   }
 
-  ipcRenderer.on('new-project', (event, arg) => {
+  ipcRenderer.on('new-project', function(event, arg) {
     $timeout(vm.newProject());
   });
 
-  ipcRenderer.on('open-project', (event, arg) => {
+  ipcRenderer.on('open-project', function(event, arg) {
     $timeout(vm.openProject());
   });
 }
