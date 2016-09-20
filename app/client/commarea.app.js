@@ -1,6 +1,7 @@
 var app = angular
   .module('commarea', [
     'ui.bootstrap',
+    'ngConfirm',
     'commarea.routes',
     'commarea.core',
     'commarea.services',

@@ -47,6 +47,10 @@ function FieldController(ipcRenderer, ProjectService) {
     delete vm.data['nullable'];
   }
 
+  vm.delete = (index) => {
+    console.log('delete => ', index);
+  }
+
   ipcRenderer.on('loaded-data-type', (event, arg) => {
     vm.extractDataType(arg);
   });
