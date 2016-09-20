@@ -26,8 +26,26 @@ function FieldController(ipcRenderer, ProjectService) {
   };
 
   vm.addType = () => {
-    console.log('adicionar');
+    vm.types.push(vm._newType());
   };
+
+  vm._newType = () => {
+    var result = {
+      name: vm.data.name,
+      type: vm.data.selectedType,
+      nullable: vm.data.nullable
+    };
+
+    vm._resetType();
+
+    return result;
+  };
+
+  vm._resetType = () => {
+    delete vm.data['name'];
+    delete vm.data['selectedType'];
+    delete vm.data['nullable'];
+  }
 
   ipcRenderer.on('loaded-data-type', (event, arg) => {
     vm.extractDataType(arg);

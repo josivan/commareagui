@@ -18,6 +18,21 @@
     </form>
   </div>
 </div>
+<table class="table">
+  <thead>
+    <th>Nome</th>
+    <th>Tipo</th>
+    <th>Permite Nulo</th>
+    <th>&nbsp;</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="type in fc.types">
+      <td>{{type.name}}</td>
+      <td>{{type.type.nome}}</td>
+      <td>{{type.nullable}}</td>
+    </tr>
+  </tbody>
+</table>
 <div class="pull-right">
   <div class="btn-group">
     <a id="btnBack" class="btn btn-default" href="#novo" role="button">Voltar</a>
