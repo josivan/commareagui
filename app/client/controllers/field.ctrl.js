@@ -48,7 +48,7 @@ function FieldController(ipcRenderer, ProjectService) {
   }
 
   vm.delete = (index) => {
-    console.log('delete => ', index);
+    vm.types.slice(index, 1);
   }
 
   ipcRenderer.on('loaded-data-type', (event, arg) => {
