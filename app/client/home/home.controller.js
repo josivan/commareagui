@@ -4,20 +4,29 @@
     .module('commarea.home')
     .controller('HomeController', HomeController);
 
-    HomeController.$inject = [];
+    HomeController.$inject = ['$location', '$timeout', 'ipcRenderer'];
 
-    function HomeController() {
-      var vm = angular.extend(this, {
-        newProject: newProject,
-        openProject: openProject
+    function HomeController($location, $timeout, ipcRenderer) {
+      //private
+      ipcRenderer.on('new-project', () => {
+        $timeout(newProject());
+      });
+      ipcRenderer.on('open-project', () => {
+        $timeout(openProject());
       });
 
+      //public
       function newProject() {
-        console.log('new');
+        $location.path('novo');
       }
 
       function openProject() {
-        console.log('open');
+        $location.path('novo');
       }
+
+      angular.extend(this, {
+        newProject: newProject,
+        openProject: openProject
+      });
     }
 })();

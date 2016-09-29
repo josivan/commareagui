@@ -2,5 +2,7 @@
   'use strict';
 
   angular
-    .module('commarea.home', []);
+    .module('commarea.home', [
+      'angular-electron'
+    ]);
 })();
