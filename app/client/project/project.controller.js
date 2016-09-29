@@ -17,8 +17,25 @@
     //public
     var data = ProjectService.getData();
 
-    function cancel() {
+    var cancel = () => {
       $location.path('/');
+    }
+
+    var save = () => {
+      ipcRenderer.sendSync('save-project', data);
+      data.action = 'Editar';
+      data.editionMode = true;
+    }
+
+    var selectPath = () => {
+      var selectedPath = ProjectService.getSelectedPath();
+    
+      if (selectedPath) {
+        data.prjPath = selectedPath[0];
+      }
+      else {
+        delete data["prjPath"];
+      }
     }
 
     //private
@@ -30,7 +47,9 @@
 
     var _init = () => {
       var action = $routeParams.action; 
-      data.action = action;
+      data = {
+        action: action
+      }
       
       if (action == 'Editar') {
         _selectFile();
@@ -54,7 +73,9 @@
 
     angular.extend(this, {
       data: data,
-      cancel: cancel
+      cancel: cancel,
+      selectPath: selectPath,
+      save: save
     });
   }
 })();

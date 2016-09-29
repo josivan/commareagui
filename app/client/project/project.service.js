@@ -5,9 +5,9 @@
     .module('commarea.project')
     .service('ProjectService', ProjectService);
 
-  ProjectService.$inject = ['dialog', 'BrowserWindow'];
+  ProjectService.$inject = ['dialog', 'BrowserWindow', 'path'];
 
-  function ProjectService(dialog, BrowserWindow) {
+  function ProjectService(dialog, BrowserWindow, path) {
     var _data = {};
 
     this.getData = () => {
@@ -22,7 +22,7 @@
       return dialog.showOpenDialog(BrowserWindow.getFocusedWindow(), 
         {
           title: 'Abrir um Projeto Existente',
-          defaultPath: './',
+          defaultPath: path.resolve('./'),
           properties: [
             'openFile'
           ],
@@ -30,6 +30,17 @@
             name: 'Projetos Comm Area',
             extensions: ['caproject']
           }]
+        });
+    }
+
+    this.getSelectedPath = () => {
+      return dialog.showOpenDialog(BrowserWindow.getFocusedWindow(), 
+        {
+          title: 'Selecionar um caminho',
+          defaultPath: path.resolve('/'),
+          properties: [
+            'openDirectory'
+          ]
         });
     }
   }
