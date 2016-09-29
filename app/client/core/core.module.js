@@ -4,7 +4,8 @@
   angular
     .module('commarea.core', [
       'ngRoute',
-      'commarea.home'
+      'commarea.home',
+      'commarea.project'
     ])
     .config(Routes);
   
@@ -13,14 +14,14 @@
   function Routes($routeProvider) {
     $routeProvider
       .when('/welcome', {
-        templateUrl: 'screens/welcome.html',
+        templateUrl: 'client/home/home.html',
         controller: 'HomeController as hc'
       })
-      /*.when('/novo', {
-        templateUrl: 'screens/project-edition.html',
+      .when('/novo', {
+        templateUrl: 'client/project/project-form.template.html',
         controller: 'ProjectController as pc'
       })
-      .when('/fields', {
+      /*.when('/fields', {
         templateUrl: 'screens/fields-edition.html',
         controller: 'FieldController as fc'
       })*/
