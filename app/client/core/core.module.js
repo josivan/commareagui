@@ -17,7 +17,7 @@
         templateUrl: 'client/home/home.html',
         controller: 'HomeController as hc'
       })
-      .when('/novo', {
+      .when('/project/:action', {
         templateUrl: 'client/project/project-form.template.html',
         controller: 'ProjectController as pc'
       })

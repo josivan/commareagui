@@ -1,5 +1,8 @@
 (function() {
   'use strict';
+
   angular
-    .module('commarea.project', []);
+    .module('commarea.project', [
+      'angular-electron'
+    ]);
 })();

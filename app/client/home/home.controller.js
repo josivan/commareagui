@@ -1,5 +1,6 @@
 (function() {
   'use strict';
+  
   angular
     .module('commarea.home')
     .controller('HomeController', HomeController);
@@ -17,11 +18,11 @@
 
       //public
       function newProject() {
-        $location.path('novo');
+        $location.path('project/Novo');
       }
 
       function openProject() {
-        $location.path('novo');
+        $location.path('project/Editar');
       }
 
       angular.extend(this, {
