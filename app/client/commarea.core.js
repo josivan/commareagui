@@ -1,5 +1,9 @@
-angular
-  .module('commarea.core', [
-    'ngResource',
-    'angular-electron'
-  ]);
+(function() {
+  'use strict';
+
+  angular
+    .module('commarea.core', [
+      'ngResource',
+      'angular-electron'
+    ]);
+})();

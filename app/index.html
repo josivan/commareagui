@@ -7,7 +7,7 @@
     <title>Comm Area GUI</title>
   </head>
   <body>
-    <div class="container" ng-controller="ProjectController as ctrl">
+    <div class="container">
       <div class="page-header">
         <h1>Commarea GUI - <small>Ferramenta para geração de PDC</small></h1>
       </div>
@@ -25,6 +25,12 @@
       require('ng-confirm');
     </script>
     <script src="client/commarea.app.js"></script>
+    <script src="client/core/core.module.js"></script>
+
+    <script src="client/home/home.module.js"></script>
+    <script src="client/home/home.controller.js"></script>
+
+    <!--
     <script src="client/commarea.core.js"></script>
     <script src="client/commarea.routes.js"></script>
     <script src="client/commarea.services.js"></script>
@@ -32,5 +38,6 @@
     <script src="client/services/project.srv.js"></script>
     <script src="client/controllers/project.ctrl.js"></script>
     <script src="client/controllers/field.ctrl.js"></script>
+    -->
   </body>
 </html>
