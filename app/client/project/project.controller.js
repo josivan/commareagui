@@ -28,7 +28,7 @@
     }
 
     var selectPath = () => {
-      var selectedPath = ProjectService.getSelectedPath();
+      let selectedPath = ProjectService.getSelectedPath();
     
       if (selectedPath) {
         data.prjPath = selectedPath[0];
@@ -42,24 +42,35 @@
     var _openProject = (file) => {
         data = ipcRenderer.sendSync('open-project', file);
         data.editionMode = true;
+        data.action = 'Editar';
         ProjectService.setData(data);
     }
 
     var _init = () => {
-      var action = $routeParams.action; 
-      data = {
-        action: action
-      }
-      
+      var action = $routeParams.action;
+
       if (action == 'Editar') {
-        _selectFile();
+          _edit();
+      }
+      else if (action == 'Novo') {
+          _new(action);
       }
 
       ProjectService.setData(data);
     }
 
+    var _new = (action) => {
+      data = {
+        action: action
+      }
+    }
+
+    var _edit = () => {
+      _selectFile();
+    }
+
     var _selectFile = () => {
-      var file = ProjectService.getSelectedFile();
+      let file = ProjectService.getSelectedFile();
 
       if (file) {
         _openProject(file[0]);

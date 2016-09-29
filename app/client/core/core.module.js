@@ -21,10 +21,10 @@
         templateUrl: 'client/project/project-form.template.html',
         controller: 'ProjectController as pc'
       })
-      /*.when('/fields', {
-        templateUrl: 'screens/fields-edition.html',
+      .when('/fields', {
+        templateUrl: 'client/field/field-form.template.html',
         controller: 'FieldController as fc'
-      })*/
+      })
       .otherwise({
         redirectTo: '/welcome'
       });
