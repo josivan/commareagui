@@ -28,14 +28,6 @@
       });
     };
 
-    var addType = () => {
-      fields.push(_newType());
-    }
-
-    var deleteField = (index) => {
-      fields.splice(index, 1);
-    }
-
     var _newType = () => {
       let result = {
         name: data.name,
@@ -63,8 +55,23 @@
 
     _init();
 
+    var addType = () => {
+      fields.push(_newType());
+    }
+
+    var deleteField = (index) => {
+      fields.splice(index, 1);
+    }
+
+    //var clickOnTab = (index) => {
+    //function clickOnTab(index) {
+    var clickOnTab = function(index) {
+      console.log('clickOnTab', index);
+    }
+
     angular.extend(this, {
       addType: addType,
+      clickOnTab: clickOnTab,
       data: data,
       dataTypes: dataTypes,
       deleteField: deleteField,

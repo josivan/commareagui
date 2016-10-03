@@ -18,6 +18,10 @@
     </form>
   </div>
 </div>
+<uib-tabset active="active" justified="true">
+  <uib-tab index="0" heading="Requisição" select="fc.clickOnTab('Req')">Lista de campos para a requisição</uib-tab>
+  <uib-tab index="1" heading="Resposta" select="fc.clickOnTab('Jps')">Lista de campos para a resposta</uib-tab>
+</uib-tabset>
 <div class="alert alert-info text-center" role="alert" ng-hide="fc.fields.length">Não existem campos para o projeto.</div>
 <table class="table" ng-show="fc.fields.length">
   <thead>
