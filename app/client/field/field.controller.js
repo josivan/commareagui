@@ -63,9 +63,7 @@
       fields.splice(index, 1);
     }
 
-    //var clickOnTab = (index) => {
-    //function clickOnTab(index) {
-    var clickOnTab = function(index) {
+    var clickOnTab = (index) => {
       console.log('clickOnTab', index);
     }
 
