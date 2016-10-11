@@ -72,8 +72,8 @@
       //fields.splice(index, 1);
     }
 
-    var clickOnTab = function(index) {
-      data.parameterOf = index;
+    var clickOnTab = (index) => {
+      console.log('clickOnTab', index);
     }
 
     angular.extend(this, {
