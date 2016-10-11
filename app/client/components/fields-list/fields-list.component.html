@@ -1,0 +1,20 @@
+Josivan {{$ctrl.filterType}}<br>
+Pereira {{$ctrl.list}}<br>
+Souza {{$ctrl.onDelete}}<br>
+<div class="alert alert-info text-center" role="alert" ng-hide="$ctrl.list.length">Não existem campos para o projeto.</div>
+<table class="table" ng-show="$ctrl.list.length">
+  <thead>
+    <th>Nome</th>
+    <th>Tipo</th>
+    <th>Permite Nulo</th>
+    <th>&nbsp;</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="type in $ctrl.list | filter: { parameterOf: $ctrl.filterType }">
+      <td>{{type.name}}</td>
+      <td>{{type.type.nome}}</td>
+      <td>{{type.nullable}}</td>
+      <td class="text-right"><button ng-confirm="Certeza?" type="button" class="btn btn-danger" ng-click="$ctrl.onDelete($index)" style="width: 100px;">Deletar</button></td>
+    </tr>
+  </tbody>
+</table>
