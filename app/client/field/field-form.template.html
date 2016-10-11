@@ -19,26 +19,17 @@
   </div>
 </div>
 <uib-tabset active="active" justified="true">
-  <uib-tab index="0" heading="Requisição" select="fc.clickOnTab('Req')">Lista de campos para a requisição</uib-tab>
-  <uib-tab index="1" heading="Resposta" select="fc.clickOnTab('Jps')">Lista de campos para a resposta</uib-tab>
+  <uib-tab index="0" heading="Requisição" select="fc.clickOnTab('request')">
+    <fields-list
+      list="fc.requestFields"
+      on-delete="fc.deleteField()"></fields-list>
+  </uib-tab>
+  <uib-tab index="1" heading="Resposta" select="fc.clickOnTab('response')">
+    <fields-list
+      list="fc.responseFields"
+      on-delete="fc.deleteField()"></fields-list>
+  </uib-tab>
 </uib-tabset>
-<div class="alert alert-info text-center" role="alert" ng-hide="fc.fields.length">Não existem campos para o projeto.</div>
-<table class="table" ng-show="fc.fields.length">
-  <thead>
-    <th>Nome</th>
-    <th>Tipo</th>
-    <th>Permite Nulo</th>
-    <th>&nbsp;</th>
-  </thead>
-  <tbody>
-    <tr ng-repeat="type in fc.fields">
-      <td>{{type.name}}</td>
-      <td>{{type.type.nome}}</td>
-      <td>{{type.nullable}}</td>
-      <td class="text-right"><button ng-confirm="Certeza?" type="button" class="btn btn-danger" ng-click="fc.deleteField($index)" style="width: 100px;">Deletar</button></td>
-    </tr>
-  </tbody>
-</table>
 <div class="pull-right">
   <div class="btn-group">
     <a id="btnBack" class="btn btn-default" href="#project/fields" role="button">Voltar</a>

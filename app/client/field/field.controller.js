@@ -15,7 +15,8 @@
     var projectName = ProjectService.getData()['prjName'];
     var data = {};
     var dataTypes = [];
-    var fields = [];
+    var requestFields = [];
+    var responseFields = [];
 
     var _extractDataType = (arg) => {
       let availableTypes = arg['valores'].split(',');
@@ -32,7 +33,7 @@
       let result = {
         name: data.name,
         type: data.selectedType,
-        nullable: data.nullable
+        nullable: data.nullable,
       };
 
       _resetType();
@@ -56,17 +57,23 @@
     _init();
 
     var addType = () => {
-      fields.push(_newType());
+      let _nType = _newType();
+
+      if (data.parameterOf == 'response') {
+        responseFields.push(_nType);
+      }
+      else {
+        requestFields.push(_nType);
+      }
     }
 
     var deleteField = (index) => {
-      fields.splice(index, 1);
+      console.log('deletando', index);
+      //fields.splice(index, 1);
     }
 
-    //var clickOnTab = (index) => {
-    //function clickOnTab(index) {
     var clickOnTab = function(index) {
-      console.log('clickOnTab', index);
+      data.parameterOf = index;
     }
 
     angular.extend(this, {
@@ -76,7 +83,8 @@
       dataTypes: dataTypes,
       deleteField: deleteField,
       projectName: projectName,
-      fields: fields
+      requestFields: requestFields,
+      responseFields: responseFields
     });
   }
 })();
