@@ -6,14 +6,17 @@
     .controller('FieldController', FieldController);
 
   FieldController.$inject = [
+    '$location',
     'ipcRenderer',
     'ProjectService'
   ];
 
-  function FieldController(ipcRenderer, ProjectService) {
+  function FieldController($location, ipcRenderer, ProjectService) {
     
     var projectName = ProjectService.getData()['prjName'];
-    var data = {};
+    var data = {
+      parameterOf: 'request'
+    };
     var dataTypes = [];
     var requestFields = [];
     var responseFields = [];
@@ -57,23 +60,28 @@
     _init();
 
     var addType = () => {
-      let _nType = _newType();
+      _list().push( _newType());
+    }
 
-      if (data.parameterOf == 'response') {
-        responseFields.push(_nType);
-      }
-      else {
-        requestFields.push(_nType);
-      }
+    var _list = () => {
+      return data.parameterOf == 'response'
+        ? responseFields
+        : requestFields;
     }
 
     var deleteField = (index) => {
-      console.log('deletando', index);
-      //fields.splice(index, 1);
+      _list().splice(index, 1);
     }
 
     var clickOnTab = (index) => {
-      console.log('clickOnTab', index);
+      data.parameterOf = index;
+    }
+
+    var save = () => {
+      let data = ProjectService.getData();
+      data.requestFields = requestFields;
+      data.responseFields = responseFields;
+      $location.path('project/fields');
     }
 
     angular.extend(this, {
@@ -84,7 +92,8 @@
       deleteField: deleteField,
       projectName: projectName,
       requestFields: requestFields,
-      responseFields: responseFields
+      responseFields: responseFields,
+      save: save
     });
   }
 })();
