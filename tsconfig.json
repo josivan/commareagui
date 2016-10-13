@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "system",
+    "target": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
@@ -12,9 +12,6 @@
     "outDir": "app",
     "watch": false
   },
-  "exclude": [
-    "node_modules"
-  ],
   "include": [
     "src/**/*"
   ]

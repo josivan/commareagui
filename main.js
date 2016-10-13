@@ -16,7 +16,8 @@ app.on('ready', () => {
     center: true
   });
   window.setMenu(menu);
-  window.loadURL(`file://${__dirname}/app/index.html`); 
+  // window.loadURL(`file://${__dirname}/app/index.html`);
+  window.loadURL(`file://${__dirname}/index.html`); 
   window.openDevTools();
 
   /*

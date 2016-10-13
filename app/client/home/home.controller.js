@@ -1,3 +1,4 @@
+/*
 (function() {
   'use strict';
   
@@ -31,3 +32,14 @@
       });
     }
 })();
+*/
+/*
+export class HomeController {
+  constructor(location: $location) {
+
+  }
+}
+
+HomeController.$inject = ['$location'];
+*/ 
+//# sourceMappingURL=home.controller.js.map

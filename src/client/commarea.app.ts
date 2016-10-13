@@ -1,20 +1,11 @@
-/// <reference path="../../typings/angularjs/angular.d.ts" />
-import { UpgradeAdapter } from '@angular/upgrade';
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-var adapter = new UpgradeAdapter();
+import { AppComponent } from './app.component';
 
-/*
-(function() {
-  'use strict';
-
-  angular
-    .module('commarea', [
-      'ui.bootstrap',
-      'ngConfirm',
-      'commarea.core'
-    ]);
-})();
-*/
-var app = angular.module('commarea', []);
-
-adapter.bootstrap(document.body, ['commarea']); 
+@NgModule({
+  imports:      [ BrowserModule ],
+  declarations: [ AppComponent ],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }

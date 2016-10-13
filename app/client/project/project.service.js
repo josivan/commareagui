@@ -1,3 +1,4 @@
+/*
 (function() {
   'use strict';
 
@@ -19,7 +20,7 @@
     }
 
     this.getSelectedFile = () => {
-      return dialog.showOpenDialog(BrowserWindow.getFocusedWindow(), 
+      return dialog.showOpenDialog(BrowserWindow.getFocusedWindow(),
         {
           title: 'Abrir um Projeto Existente',
           defaultPath: path.resolve('./'),
@@ -34,7 +35,7 @@
     }
 
     this.getSelectedPath = () => {
-      return dialog.showOpenDialog(BrowserWindow.getFocusedWindow(), 
+      return dialog.showOpenDialog(BrowserWindow.getFocusedWindow(),
         {
           title: 'Selecionar um caminho',
           defaultPath: path.resolve('/'),
@@ -45,3 +46,9 @@
     }
   }
 })();
+*/
+"use strict";
+class ProjectService {
+}
+exports.ProjectService = ProjectService;
+//# sourceMappingURL=project.service.js.map
