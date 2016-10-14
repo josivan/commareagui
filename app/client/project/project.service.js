@@ -12,10 +12,18 @@
 
     this.getData = () => {
       return _data;
-    };
+    }
 
     this.setData = (data) => {
       _data = data;
+    }
+
+    this.getRequestFields = () => {
+      return _data.requestFields;
+    }
+
+    this.getResponseFields = () => {
+      return _data.responseFields;
     }
 
     this.getSelectedFile = () => {

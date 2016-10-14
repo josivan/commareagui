@@ -36,7 +36,7 @@
       let result = {
         name: data.name,
         type: data.selectedType,
-        nullable: data.nullable,
+        nullable: data.nullable
       };
 
       _resetType();
@@ -51,6 +51,8 @@
     }
 
     var _init = () => {
+      requestFields = ProjectService.getRequestFields();
+      responseFields = ProjectService.getResponseFields();
       ipcRenderer.on('loaded-data-type', (event, arg) => {
         _extractDataType(arg);
       });
@@ -59,8 +61,12 @@
 
     _init();
 
-    var addType = () => {
-      _list().push( _newType());
+    var addType = (form) => {
+      let list = _list();
+      let nType = _newType();
+      nType.id = list.length; 
+      list.push(nType);
+      form.$setPristine();
     }
 
     var _list = () => {
