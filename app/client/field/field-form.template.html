@@ -3,59 +3,85 @@
     <h3 class="panel-title">Edição de Campos do Projeto {{fc.projectName}}</h3>
   </div>
   <div class="panel-body">
-    <form class="form-inline" ng-submit="fc.addType()">
-      <div class="form-group">
+    <form class="form-inline" ng-submit="fc.addType()" name="fc.form">
+      <div class="form-group has-feedback"
+        ng-class="{
+          'has-success': fc.form.nome.$dirty && fc.form.nome.$valid,
+          'has-error':  fc.form.nome.$dirty && fc.form.nome.$invalid}">
         <label for="nome">Nome:</label>
-        <input type="text" class="form-control" id="nome" placeholder="Nome do Campo" ng-model="fc.data.name">
+        <input type="text" class="form-control" id="nome" placeholder="Nome do Campo" ng-model="fc.data.name"
+          autofocus required name="nome">
+        <span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="{
+          'glyphicon-ok': fc.form.nome.$dirty && fc.form.nome.$valid,
+          'glyphicon-remove': fc.form.nome.$dirty && fc.form.nome.$invalid}"></span>
       </div>
-      <div class="form-group">
+      <div class="form-group has-feedback"
+        ng-class="{
+          'has-success': fc.form.tipo.$dirty && fc.form.tipo.$valid,
+          'has-error':  fc.form.tipo.$dirty && fc.form.tipo.$invalid}">
         <label for="tipo">Tipo:</label>
-        <select id="tipo" class="form-control" ng-model="fc.data.selectedType" 
+        <select id="tipo" class="form-control" ng-model="fc.data.selectedType" required name="tipo"
           ng-options="type as type.nome for type in fc.dataTypes track by type.map"></select>
+        <span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="{
+          'glyphicon-ok': fc.form.tipo.$dirty && fc.form.tipo.$valid,
+          'glyphicon-remove': fc.form.tipo.$dirty && fc.form.tipo.$invalid
+        }"></span>
       </div>
       <div class="checkbox"><label> <input type="checkbox" ng-model="fc.data.nullable"> Permite nulo?</label></div>
-      <div class="pull-right"><button type="submit" class="btn btn-default">Adicionar</button></div>
+      <div class="pull-right">
+        <button type="submit" class="btn btn-default" ng-disabled="fc.form.$invalid || fc.form.$pristine">
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true" uib-tooltip="Adicionar Campo"></span>
+        </button>
+      </div>
     </form>
   </div>
 </div>
 <uib-tabset active="active" justified="true">
   <uib-tab index="0" heading="Requisição" select="fc.clickOnTab('request')">
-    <div class="alert alert-info text-center" role="alert" ng-hide="fc.requestFields.length">Não existem campos de Requisição para o projeto.</div>
-    <table class="table" ng-show="fc.requestFields.length">
-      <thead>
-        <th>Nome</th>
-        <th>Tipo</th>
-        <th>Permite Nulo</th>
-        <th>&nbsp;</th>
-      </thead>
-      <tbody>
-        <tr ng-repeat="type in fc.requestFields">
-          <td>{{type.name}}</td>
-          <td>{{type.type.nome}}</td>
-          <td>{{type.nullable}}</td>
-          <td class="text-right"><button ng-confirm="Certeza?" type="button" class="btn btn-danger" ng-click="fc.deleteField($index)" style="width: 100px;">Deletar</button></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="alert alert-info text-center" role="alert" ng-hide="fc.requestFields.length">Não existem campos de Requisição para o projeto.</div>
+        <table class="table" ng-show="fc.requestFields.length">
+          <thead>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Permite Nulo</th>
+            <th>&nbsp;</th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="type in fc.requestFields">
+              <td>{{type.name}}</td>
+              <td>{{type.type.nome}}</td>
+              <td>{{type.nullable}}</td>
+              <td class="text-right"><button ng-confirm="Certeza?" type="button" class="btn btn-danger" ng-click="fc.deleteField($index)" style="width: 100px;">Deletar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </uib-tab>
   <uib-tab index="1" heading="Resposta" select="fc.clickOnTab('response')">
-    <div class="alert alert-info text-center" role="alert" ng-hide="fc.responseFields.length">Não existem campos de Resposta para o projeto.</div>
-    <table class="table" ng-show="fc.responseFields.length">
-      <thead>
-        <th>Nome</th>
-        <th>Tipo</th>
-        <th>Permite Nulo</th>
-        <th>&nbsp;</th>
-      </thead>
-      <tbody>
-        <tr ng-repeat="type in fc.responseFields">
-          <td>{{type.name}}</td>
-          <td>{{type.type.nome}}</td>
-          <td>{{type.nullable}}</td>
-          <td class="text-right"><button ng-confirm="Certeza?" type="button" class="btn btn-danger" ng-click="fc.deleteField($index)" style="width: 100px;">Deletar</button></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="alert alert-info text-center" role="alert" ng-hide="fc.responseFields.length">Não existem campos de Resposta para o projeto.</div>
+        <table class="table" ng-show="fc.responseFields.length">
+          <thead>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Permite Nulo</th>
+            <th>&nbsp;</th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="type in fc.responseFields">
+              <td>{{type.name}}</td>
+              <td>{{type.type.nome}}</td>
+              <td>{{type.nullable}}</td>
+              <td class="text-right"><button ng-confirm="Certeza?" type="button" class="btn btn-danger" ng-click="fc.deleteField($index)" style="width: 100px;">Deletar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </uib-tab>
 </uib-tabset>
 <div class="pull-right">
