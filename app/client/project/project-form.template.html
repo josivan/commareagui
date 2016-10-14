@@ -3,19 +3,18 @@
     <h3 class="panel-title">{{pc.data.action}} Projeto</h3>
   </div>
   <div class="panel-body">
-    <uib-tabset active="active" justified="true">
+    <uib-tabset active="active">
       <uib-tab index="0" heading="Dado Básicos">
         <ng-include src="'client/project/dados-basicos.html'"></ng-include>
       </uib-tab>
-      <uib-tab index="1" heading="Campos"></uib-tab>
-      <uib-tab index="0" heading="Artefatos"></uib-tab>
+      <uib-tab index="1" heading="Campos" ng-show="pc.data.editionMode">
+        <ng-include src="'client/field/field-form.template.html'"></ng-include>
+      </uib-tab>
+      <uib-tab index="0" heading="Artefatos" ng-show="pc.data.editionMode"></uib-tab>
     </uib-tabset>
   </div>
   <div class="panel-body">
     <div class="pull-right">
-      <div class="btn-group">
-        <a id="btnAddFields" class="btn btn-default" ng-show="pc.data.editionMode" href="#fields" role="button">Editar Campos</a>
-      </div>
       <div class="btn-group">
         <button id="btnSave" class="btn btn-default" ng-click="pc.save()" type="submit">Salvar</button>
       </div>
