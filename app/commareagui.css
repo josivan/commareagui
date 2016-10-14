@@ -2,3 +2,12 @@
   border: 0;
   box-shadow: none;
 }
+
+.full-width { 
+  width: 100%; 
+}
+
+.read-only {
+  text-align: left;
+  background-color: white;
+}

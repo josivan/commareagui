@@ -25,8 +25,12 @@
       <div class="form-group">
         <label for="prjName" class="col-sm-2 control-label">Pasta</label>
         <div class="col-sm-10">
-          <p class="form-control-static" ng-click="pc.selectPath()"
-            uib-tooltip="O caminho no sistema de arquivos para geração dos stubs. Clique para selecionar.">{{pc.data.prjPath ? pc.data.prjPath : 'Não definido'}}</p>
+          <div class="input-group">
+            <div class="input-group-addon full-width read-only" ng-click="pc.selectPath()" uib-tooltip="O caminho no sistema de arquivos para geração dos stubs. Clique para selecionar.">{{pc.data.prjPath ? pc.data.prjPath : 'Não definido'}}</div>
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default" aria-label="Selecionar caminho" ng-click="pc.selectPath()"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></button>
+            </div>
+          </div>
         </div>
       </div>  
       <div class="pull-right">
