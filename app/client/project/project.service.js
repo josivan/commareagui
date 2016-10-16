@@ -40,16 +40,5 @@
           }]
         });
     }
-
-    this.getSelectedPath = () => {
-      return dialog.showOpenDialog(BrowserWindow.getFocusedWindow(), 
-        {
-          title: 'Selecionar um caminho',
-          defaultPath: path.resolve('/'),
-          properties: [
-            'openDirectory'
-          ]
-        });
-    }
   }
 })();

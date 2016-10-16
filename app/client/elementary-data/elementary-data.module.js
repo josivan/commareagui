@@ -2,5 +2,5 @@
   'use strict';
 
   angular
-    .module('commarea.dadosbasicos', []);
+    .module('commarea.elementarydata', []);
 })();
