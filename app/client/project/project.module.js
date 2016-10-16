@@ -4,6 +4,6 @@
   angular
     .module('commarea.project', [
       'angular-electron',
-      'commarea.field'
+      'commarea.dadosbasicos'
     ]);
 })();

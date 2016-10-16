@@ -5,7 +5,7 @@
   <div class="panel-body">
     <uib-tabset active="active">
       <uib-tab index="0" heading="Dado Básicos">
-        <ng-include src="'client/project/dados-basicos.html'"></ng-include>
+        <dados-basicos></dados-basicos>
       </uib-tab>
       <uib-tab index="1" heading="Campos" ng-show="pc.data.editionMode">
         <ng-include src="'client/field/field-form.template.html'"></ng-include>
