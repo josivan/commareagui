@@ -10,7 +10,9 @@
       <uib-tab index="1" heading="Campos" ng-show="pc.data.editionMode">
         <ng-include src="'client/field/field-form.template.html'"></ng-include>
       </uib-tab>
-      <uib-tab index="0" heading="Artefatos" ng-show="pc.data.editionMode"></uib-tab>
+      <uib-tab index="2" heading="Artefatos" ng-show="pc.data.editionMode">
+        <artifacts></artifacts>
+      </uib-tab>
     </uib-tabset>
   </div>
   <div class="panel-body">

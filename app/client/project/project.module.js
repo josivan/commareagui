@@ -4,6 +4,7 @@
   angular
     .module('commarea.project', [
       'angular-electron',
-      'commarea.dadosbasicos'
+      'commarea.dadosbasicos',
+      'commarea.artifacts'
     ]);
 })();
