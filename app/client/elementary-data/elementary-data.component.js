@@ -5,9 +5,6 @@
     .module('commarea.elementarydata')
     .component('elementaryData', {
       templateUrl: 'client/elementary-data/elementary-data.template.html',
-      controller: 'ElementaryDataController',
-      bindings: {
-        data: '='
-      }
+      controller: 'ElementaryDataController'
     });
 })();

@@ -3,10 +3,11 @@
 
   ProjectController.$inject = [
     'ipcRenderer',
-    'ProjectService'
+    'ProjectService',
+    'ProjectDataService'
   ];
 
-  function ProjectController(ipcRenderer, ProjectService) {
+  function ProjectController(ipcRenderer, ProjectService, ProjectDataService) {
 
     // public
     var data = {};
@@ -62,7 +63,7 @@
         _new(action);
       }
 
-      // ProjectService.setData(data);
+      ProjectDataService.setData(data);
     }
 
     var _edit = () => {
