@@ -1,25 +1,16 @@
 (function() {
   'use strict';
 
-  angular
-    .module('commarea.field')
-    .controller('FieldController', FieldController);
-
-  FieldController.$inject = [
-    '$location',
+  FieldsController.$inject = [
     'ipcRenderer',
-    'ProjectService'
+    'ProjectDataService'
   ];
-
-  function FieldController($location, ipcRenderer, ProjectService) {
-    
-    var projectName = ProjectService.getData()['prjName'];
-    var data = {
-      parameterOf: 'request'
-    };
+  
+  function FieldsController(ipcRenderer, ProjectDataService) { 
+    var data = ProjectDataService.getData();
+    var requestFields = ProjectDataService.getRequestFields();
+    var responseFields = ProjectDataService.getResponseFields();
     var dataTypes = [];
-    var requestFields = [];
-    var responseFields = [];
 
     var _extractDataType = (arg) => {
       let availableTypes = arg['valores'].split(',');
@@ -42,7 +33,7 @@
       _resetType();
 
       return result;
-    };
+    }
 
     var _resetType = () => {
       delete data['name'];
@@ -51,15 +42,13 @@
     }
 
     var _init = () => {
-      requestFields = ProjectService.getRequestFields();
-      responseFields = ProjectService.getResponseFields();
+      data.parameterOf = 'request';
+
       ipcRenderer.on('loaded-data-type', (event, arg) => {
         _extractDataType(arg);
       });
       ipcRenderer.send('load-data-type');
     }
-
-    _init();
 
     var addType = (form) => {
       let list = _list();
@@ -75,31 +64,29 @@
         : requestFields;
     }
 
+    var clickOnTab = (type) => {
+      data.parameterOf = type;
+    }
+
     var deleteField = (index) => {
       _list().splice(index, 1);
     }
 
-    var clickOnTab = (index) => {
-      data.parameterOf = index;
-    }
-
-    var save = () => {
-      let data = ProjectService.getData();
-      data.requestFields = requestFields;
-      data.responseFields = responseFields;
-      $location.path('project/fields');
-    }
-
     angular.extend(this, {
+      $onInit: _init,
       addType: addType,
       clickOnTab: clickOnTab,
       data: data,
       dataTypes: dataTypes,
       deleteField: deleteField,
-      projectName: projectName,
+      projectName: data['prjName'],
       requestFields: requestFields,
-      responseFields: responseFields,
-      save: save
+      responseFields: responseFields
     });
   }
+
+  angular
+    .module('commarea.fields')
+    .controller('FieldsController', FieldsController);
+
 })();

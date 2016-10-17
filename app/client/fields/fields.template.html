@@ -1,12 +1,12 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <form class="form-inline" ng-submit="fc.addType(fc.form)" name="fc.form">
+    <form class="form-inline" ng-submit="$ctrl.addType(fc.form)" name="fc.form">
       <div class="form-group has-feedback"
         ng-class="{
           'has-success': fc.form.nome.$dirty && fc.form.nome.$valid,
           'has-error':  fc.form.nome.$dirty && fc.form.nome.$invalid}">
         <label for="nome">Nome:</label>
-        <input type="text" class="form-control" id="nome" placeholder="Nome do Campo" ng-model="fc.data.name"
+        <input type="text" class="form-control" id="nome" placeholder="Nome do Campo" ng-model="$ctrl.data.name"
           autofocus required name="nome">
         <span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="{
           'glyphicon-ok': fc.form.nome.$dirty && fc.form.nome.$valid,
@@ -17,14 +17,14 @@
           'has-success': fc.form.tipo.$dirty && fc.form.tipo.$valid,
           'has-error':  fc.form.tipo.$dirty && fc.form.tipo.$invalid}">
         <label for="tipo">Tipo:</label>
-        <select id="tipo" class="form-control" ng-model="fc.data.selectedType" required name="tipo"
-          ng-options="type as type.nome for type in fc.dataTypes track by type.map"></select>
+        <select id="tipo" class="form-control" ng-model="$ctrl.data.selectedType" required name="tipo"
+          ng-options="type as type.nome for type in $ctrl.dataTypes track by type.map"></select>
         <span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="{
           'glyphicon-ok': fc.form.tipo.$dirty && fc.form.tipo.$valid,
           'glyphicon-remove': fc.form.tipo.$dirty && fc.form.tipo.$invalid
         }"></span>
       </div>
-      <div class="checkbox"><label> <input type="checkbox" ng-model="fc.data.nullable"> Permite nulo?</label></div>
+      <div class="checkbox"><label><input type="checkbox" ng-model="$ctrl.data.nullable"> Permite nulo?</label></div>
       <div class="pull-right">
         <button type="submit" class="btn btn-default" ng-disabled="fc.form.$invalid || fc.form.$pristine">
           <span class="glyphicon glyphicon-plus-sign" aria-hidden="true" uib-tooltip="Adicionar Campo"></span>
@@ -34,11 +34,11 @@
   </div>
 </div>
 <uib-tabset active="active" justified="true">
-  <uib-tab index="0" heading="Requisição" select="fc.clickOnTab('request')">
+  <uib-tab index="0" heading="Requisição" select="$ctrl.clickOnTab('request')">
     <div class="panel panel-default">
       <div class="panel-body">
-        <div class="alert alert-info text-center" role="alert" ng-hide="fc.requestFields.length">Não existem campos de Requisição para o projeto.</div>
-        <table class="table" ng-show="fc.requestFields.length">
+        <div class="alert alert-info text-center" role="alert" ng-hide="$ctrl.requestFields.length">Não existem campos de Requisição para o projeto.</div>
+        <table class="table" ng-show="$ctrl.requestFields.length">
           <thead>
             <th>Nome</th>
             <th>Tipo</th>
@@ -46,22 +46,22 @@
             <th>&nbsp;</th>
           </thead>
           <tbody>
-            <tr ng-repeat="type in fc.requestFields">
+            <tr ng-repeat="type in $ctrl.requestFields">
               <td>{{type.name}}</td>
               <td>{{type.type.nome}}</td>
               <td><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-show="  {{type.nullable}}"></span></td>
-              <td class="text-right"><button ng-confirm="Certeza?" type="button" class="btn btn-danger" ng-click="fc.deleteField($index)" style="width: 100px;">Deletar</button></td>
+              <td class="text-right"><button ng-confirm="Certeza?" type="button" class="btn btn-danger" ng-click="$ctrl.deleteField($index)" style="width: 100px;">Deletar</button></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   </uib-tab>
-  <uib-tab index="1" heading="Resposta" select="fc.clickOnTab('response')">
+  <uib-tab index="1" heading="Resposta" select="$ctrl.clickOnTab('response')">
     <div class="panel panel-default">
       <div class="panel-body">
-        <div class="alert alert-info text-center" role="alert" ng-hide="fc.responseFields.length">Não existem campos de Resposta para o projeto.</div>
-        <table class="table" ng-show="fc.responseFields.length">
+        <div class="alert alert-info text-center" role="alert" ng-hide="$ctrl.responseFields.length">Não existem campos de Resposta para o projeto.</div>
+        <table class="table" ng-show="$ctrl.responseFields.length">
           <thead>
             <th>Nome</th>
             <th>Tipo</th>
@@ -69,11 +69,11 @@
             <th>&nbsp;</th>
           </thead>
           <tbody>
-            <tr ng-repeat="type in fc.responseFields">
+            <tr ng-repeat="type in $ctrl.responseFields">
               <td>{{type.name}}</td>
               <td>{{type.type.nome}}</td>
               <td><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-show="  {{type.nullable}}"></span></td>
-              <td class="text-right"><button ng-confirm="Certeza?" type="button" class="btn btn-danger" ng-click="fc.deleteField($index)" style="width: 100px;">Deletar</button></td>
+              <td class="text-right"><button ng-confirm="Certeza?" type="button" class="btn btn-danger" ng-click="$ctrl.deleteField($index)" style="width: 100px;">Deletar</button></td>
             </tr>
           </tbody>
         </table>
@@ -81,11 +81,3 @@
     </div>
   </uib-tab>
 </uib-tabset>
-<div class="pull-right">
-  <div class="btn-group">
-    <button id="btnSave" class="btn btn-default" ng-click="fc.save()" type="button">Salvar</button>
-  </div>
-  <div class="btn-group">
-    <a id="btnBack" class="btn btn-default" href="#project/fields" role="button">Voltar</a>
-  </div>
-</div>
