@@ -3,6 +3,7 @@
 
   angular
     .module('commarea.field', [
-      'commarea.components'
+      'commarea.components',
+      'ngConfirm',
     ]);
 })();

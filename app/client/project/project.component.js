@@ -6,6 +6,8 @@
     .component('project', {
       templateUrl: 'client/project/project-form.template.html',
       controller: 'ProjectController',
-      bindings: { $router: '<' }
+      bindings: { 
+        $router: '<'
+      }
     });
 })();
