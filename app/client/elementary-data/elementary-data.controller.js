@@ -6,7 +6,6 @@
   ];
 
   function ElementaryDataController(ElementaryDataService) {
-    var data = {};
 
     var selectPath = () => {
       let selectedPath = ElementaryDataService.getSelectedPath();
@@ -20,7 +19,6 @@
     }
 
     angular.extend(this, {
-      data: data,
       selectPath: selectPath
     });
   }

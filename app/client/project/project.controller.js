@@ -1,16 +1,12 @@
 (function() {
   'use strict';
 
-  /*
   ProjectController.$inject = [
-    '$location',
-    '$routeParams',
     'ipcRenderer',
     'ProjectService'
   ];
-  */
 
-  function ProjectController() { // $location, $routeParams, ipcRenderer, ProjectService) {
+  function ProjectController(ipcRenderer, ProjectService) {
 
     // public
     var data = {};
@@ -45,10 +41,11 @@
 
     //private
     var _openProject = (file) => {
-        // data = ipcRenderer.sendSync('open-project', file);
-        data.editionMode = true;
-        data.action = 'Editar';
-        // ProjectService.setData(data);
+      let dataFromFile = ipcRenderer.sendSync('open-project', file);
+      angular.copy(dataFromFile, data);
+      data.editionMode = true;
+      data.action = 'Editar';
+      ProjectService.setData(data);
     }
 
     var _new = (action) => {
@@ -59,7 +56,7 @@
       let action = next.params.action;
      
       if (action == 'Editar') {
-          //_edit();
+          _edit();
       }
       else if (action == 'Novo') {
         _new(action);
@@ -73,7 +70,6 @@
     }
 
     var _selectFile = () => {
-      /*
       let file = ProjectService.getSelectedFile();
 
       if (file) {
@@ -82,7 +78,6 @@
       else {
         cancel();
       }
-      */
     }
 
     angular.extend(this, {
