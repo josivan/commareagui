@@ -5,6 +5,8 @@
     .module('commarea.project', [
       'angular-electron',
       'ui.bootstrap',
-      'commarea.elementarydata'
+      'commarea.elementarydata',
+      'commarea.fields',
+      'commarea.artifacts'
     ]);
 })();

@@ -3,10 +3,16 @@ const fh = require('./file-handler.app.js');
 
 ipcMain.on('save-project', (event, arg) => {
   if (saveFile(arg)) {
-    event.returnValue = 'Salvo com sucesso';
+    event.returnValue = {
+      type: 'success',
+      text: 'Salvo com sucesso'
+    }
   }
   else {
-    event.returnValue = 'Falhou ao salvar';
+    event.returnValue = {
+      type: 'danger',
+      text: 'Falha ao salvar'
+    } 
   }
 });
 

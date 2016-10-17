@@ -10,35 +10,28 @@
   function ProjectController(ipcRenderer, ProjectService, ProjectDataService) {
 
     // public
-    var data = {};
+    var data = ProjectDataService.getData();
+    var hasMessage = false;
+    var message = null;
 
     var cancel = () => {
       this.$router.navigate(['Home']);
     }
 
-    var save = () => {
-      // ipcRenderer.sendSync('save-project', data);
+    function save() {
+      message = {};
+      let result = ipcRenderer.sendSync('save-project', data);
+      hasMessage = true;
+      angular.copy(result, message);
       data.action = 'Editar';
       data.editionMode = true;
     }
 
-    var selectPath = () => {
-      /*
-      let selectedPath = ProjectService.getSelectedPath();
-    
-      if (selectedPath) {
-        data.prjPath = selectedPath[0];
-      }
-      else {
-        delete data["prjPath"];
-      }
-      */
+    var resetMessage = () => {
+      console.log('resetting message...', message);
+      hasMessage = false;
+      message = null;
     }
-
-    /*
-    //public
-    var data = ProjectService.getData();
-    */
 
     //private
     var _openProject = (file) => {
@@ -46,7 +39,6 @@
       angular.copy(dataFromFile, data);
       data.editionMode = true;
       data.action = 'Editar';
-      ProjectService.setData(data);
     }
 
     var _new = (action) => {
@@ -62,8 +54,6 @@
       else if (action == 'Novo') {
         _new(action);
       }
-
-      ProjectDataService.setData(data);
     }
 
     var _edit = () => {
@@ -85,8 +75,10 @@
       $routerOnActivate: _init,
       cancel: cancel,
       data: data,
-      save: save,
-      selectPath: selectPath
+      hasMessage: hasMessage,
+      message: message,
+      resetMessage: resetMessage,
+      save: save
     });
   }
 

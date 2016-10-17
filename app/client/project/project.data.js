@@ -4,19 +4,30 @@
   ProjectDataService.$inject = [];
   function ProjectDataService() {
 
-    var _data = {};
+    var data = {};
 
-    var _getData = () => {
-      return _data;
+    var getData = () => {
+      return data;
     }
 
-    var _setData = (newData) => {
-      angular.copy(newData, _data);
+    var setData = (newData) => {
+      angular.copy(newData, data);
     }
+
+    var getRequestFields = () => {
+      return data.requestFields;
+    }
+
+    var getResponseFields = () => {
+      return data.responseFields;
+    }
+
 
     angular.extend(ProjectDataService.prototype, {
-      getData: _getData,
-      setData: _setData
+      getData: getData,
+      getRequestFields: getRequestFields,
+      getResponseFields: getResponseFields,
+      setData: setData
     });
   }
 
