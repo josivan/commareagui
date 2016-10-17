@@ -1,22 +1,16 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">{{$ctrl.data.action}} Projeto</h3>
+    <h3 class="panel-title">{{$ctrl.data.action}} Projeto {{$ctrl.data.prjName}}</h3>
   </div>
   <div class="panel-body">
+    {{$ctrl.message}}<br>
+    {{$ctrl.hasMessage}}<br>
+    <div uib-alert close="$ctrl.resetMessage()" ng-show="$ctrl.hasMessage" dismiss-on-timeout="5000"
+      ng-class="'alert-' + ($ctrl.message.type || 'warning')">{{$ctrl.message.text}}</div>
     <uib-tabset active="active">
-      <uib-tab index="0" heading="Dado Básicos">
-        <elementary-data></elementary-data>
-      </uib-tab>
-      <uib-tab index="1" heading="Campos" ng-show="pc.data.editionMode">
-<!--
-        <ng-include src="'client/field/field-form.template.html'"></ng-include>
--->
-      </uib-tab>
-      <uib-tab index="2" heading="Artefatos" ng-show="pc.data.editionMode">
-        <!--
-        <artifacts></artifacts>
-  -->
-      </uib-tab>
+      <uib-tab index="0" heading="Dado Básicos"><elementary-data></elementary-data></uib-tab>
+      <uib-tab index="1" heading="Campos" ng-show="$ctrl.data.editionMode"><fields></fields></uib-tab>
+      <uib-tab index="2" heading="Artefatos" ng-show="$ctrl.data.editionMode"><artifacts></artifacts></uib-tab>
     </uib-tabset>
   </div>
   <div class="panel-body">
