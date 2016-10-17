@@ -3,8 +3,6 @@
 
   angular
     .module('commarea.project', [
-      'angular-electron',
-      'commarea.elementarydata',
-      'commarea.artifacts'
+      'angular-electron'
     ]);
 })();

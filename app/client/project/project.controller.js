@@ -1,19 +1,25 @@
 (function() {
   'use strict';
 
-  angular
-    .module('commarea.project')
-    .controller('ProjectController', ProjectController);
-  
+  /*
   ProjectController.$inject = [
     '$location',
     '$routeParams',
     'ipcRenderer',
     'ProjectService'
   ];
+  */
 
-  function ProjectController($location, $routeParams, ipcRenderer, ProjectService) {
-    
+  function ProjectController() { // $location, $routeParams, ipcRenderer, ProjectService) {
+
+    var cancel = () => {
+      this.$router.navigate(['Home']);
+    }
+
+    var save = () => {
+      console.log('salvar projeto');
+    }
+    /*
     //public
     var data = ProjectService.getData();
 
@@ -88,5 +94,15 @@
       selectPath: selectPath,
       save: save
     });
+    */
+
+    angular.extend(this, {
+      cancel: cancel,
+      save: save
+    });
   }
+
+  angular
+    .module('commarea.project')
+    .controller('ProjectController', ProjectController);
 })();

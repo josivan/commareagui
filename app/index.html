@@ -11,7 +11,7 @@
       <div class="page-header">
         <h1>Commarea GUI - <small>Ferramenta para geração de PDC</small></h1>
       </div>
-      <div class="panel-body"><div ng-view></div></div>
+      <div class="panel-body"><app></app></div>
     </div>
     <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
     <script>
@@ -24,15 +24,19 @@
       require('angular-ui-bootstrap');
       require('ng-confirm');
     </script>
+    <script type="text/javascript" src="../node_modules/@angular/router/angular1/angular_1_router.js"></script>
     <script src="client/commarea.app.js"></script>
-    <script src="client/core/core.module.js"></script>
-
-    <script src="client/components/components.module.js"></script>
-    <script src="client/components/fields-list/fields-list.component.js"></script>
+    <script src="client/app.component.js"></script>
 
     <script src="client/home/home.module.js"></script>
     <script src="client/home/home.controller.js"></script>
+    <script src="client/home/home.component.js"></script>
 
+    <script src="client/project/project.module.js"></script>
+    <script src="client/project/project.controller.js"></script>
+    <script src="client/project/project.component.js"></script>
+
+    <!--
     <script src="client/elementary-data/elementary-data.module.js"></script>
     <script src="client/elementary-data/elementary-data.service.js"></script>
     <script src="client/elementary-data/elementary-data.component.js"></script>
@@ -43,9 +47,20 @@
     <script src="client/project/project.module.js"></script>
     <script src="client/project/project.service.js"></script>
     <script src="client/project/project.controller.js"></script>
+    
+
+    <script src="client/core/core.module.js"></script>
+
+    <script src="client/components/components.module.js"></script>
+    <script src="client/components/fields-list/fields-list.component.js"></script>
+
+    <script src="client/home/home.module.js"></script>
+    <script src="client/home/home.controller.js"></script>
+
 
     <script src="client/field/field.module.js"></script>
     <script src="client/field/field.controller.js"></script>
+    -->
     
   </body>
 </html>

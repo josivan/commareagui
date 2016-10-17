@@ -3,8 +3,7 @@
 
   angular
     .module('commarea', [
-      'ui.bootstrap',
-      'ngConfirm',
-      'commarea.core'
+      'commarea.home',
+      'commarea.project'
     ]);
 })();

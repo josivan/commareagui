@@ -1,6 +1,7 @@
 <div class="panel panel-default">
+  <!--
   <div class="panel-heading">
-    <h3 class="panel-title">{{pc.data.action}} Projeto</h3>
+    <h3 class="panel-title">{{$ctrl.data.action}} Projeto</h3>
   </div>
   <div class="panel-body">
     <uib-tabset active="active">
@@ -15,13 +16,14 @@
       </uib-tab>
     </uib-tabset>
   </div>
+  -->
   <div class="panel-body">
     <div class="pull-right">
       <div class="btn-group">
-        <button id="btnSave" class="btn btn-default" ng-click="pc.save()" type="submit">Salvar</button>
+        <button id="btnSave" class="btn btn-default" ng-click="$ctrl.save()" type="submit">Salvar</button>
       </div>
       <div class="btn-group">
-        <button id="btnCancel" class="btn btn-default" ng-click="pc.cancel()" type="reset">Cancelar</button>
+        <button id="btnCancel" class="btn btn-default" ng-click="$ctrl.cancel()" type="reset">Cancelar</button>
       </div>
     </div>
   </div>

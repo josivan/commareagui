@@ -3,6 +3,7 @@
 
   angular
     .module('commarea.home', [
+      'ngComponentRouter',
       'angular-electron'
     ]);
 })();
