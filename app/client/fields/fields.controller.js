@@ -59,13 +59,13 @@
     }
 
     var _list = () => {
-      return data.parameterOf == 'response'
-        ? responseFields
-        : requestFields;
+      return this.data.parameterOf == 'response'
+        ? this.responseFields
+        : this.requestFields;
     }
 
     var clickOnTab = (type) => {
-      data.parameterOf = type;
+      this.data.parameterOf = type;
     }
 
     var deleteField = (index) => {

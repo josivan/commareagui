@@ -15,10 +15,18 @@
     }
 
     var getRequestFields = () => {
+      if (!this.data.requestFields) {
+        this.data.requestFields = [];
+      }
+
       return this.data.requestFields;
     }
 
     var getResponseFields = () => {
+      if (!this.data.responseFields) {
+        this.data.responseFields = [];
+      }
+
       return this.data.responseFields;
     }
 

@@ -7,7 +7,7 @@
           'has-error':  fc.form.nome.$dirty && fc.form.nome.$invalid}">
         <label for="nome">Nome:</label>
         <input type="text" class="form-control" id="nome" placeholder="Nome do Campo" ng-model="$ctrl.data.name"
-          autofocus required name="nome">
+          autofocus required name="nome" ng-pattern="/^[a-zA-Z0-9\-]*$/" ng-trim="false" capitalize>
         <span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="{
           'glyphicon-ok': fc.form.nome.$dirty && fc.form.nome.$valid,
           'glyphicon-remove': fc.form.nome.$dirty && fc.form.nome.$invalid}"></span>

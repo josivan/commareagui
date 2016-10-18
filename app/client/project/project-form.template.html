@@ -3,7 +3,7 @@
     <h3 class="panel-title">{{$ctrl.data.action}} Projeto {{$ctrl.data.prjName}}</h3>
   </div>
   <div class="panel-body">
-    <div uib-alert close="$ctrl.resetMessage()" ng-show="$ctrl.hasMessage" dismiss-on-timeout="5000"
+    <div uib-alert close="$ctrl.resetMessage()" ng-if="$ctrl.hasMessage" dismiss-on-timeout="5000"
       ng-class="'alert-' + ($ctrl.message.type || 'warning')">{{$ctrl.message.text}}</div>
     <uib-tabset active="active">
       <uib-tab index="0" heading="Dado Básicos"><elementary-data></elementary-data></uib-tab>
