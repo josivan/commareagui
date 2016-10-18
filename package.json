@@ -16,6 +16,7 @@
     "@angular/router": "^0.2.0",
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",
+    "angular-bootstrap-toggle": "^0.1.2",
     "angular-electron": "^0.2.1",
     "angular-resource": "^1.5.8",
     "angular-route": "^1.5.8",

@@ -2,5 +2,7 @@
   'use strict';
 
   angular
-    .module('commarea.artifacts', []);
+    .module('commarea.artifacts', [
+      'ui.toggle'
+    ]);
 })();

@@ -1,3 +1,48 @@
 <div class="panel panel-default">
-  <div class="panel-body">Artefatos</div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">Geração de Arquivos XSD</div>
+          <div class="panel-body">
+            <div  class="form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-sm-4">Request</label>
+                <div class="col-sm-8">
+                  <toggle ng-model="$ctrl.data.artifacts.xsdRequest" ng-change="$ctrl.changed('xsdReq')" on="Sim" off="Não" size="btn-sm"></toggle>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-4">Response</label>
+                <div class="col-sm-8">
+                  <toggle ng-model="$ctrl.data.artifacts.xsdResponse" ng-change="$ctrl.changed('xsdRes')" on="Sim" off="Não" size="btn-sm"></toggle>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">Arquivos Java</div>
+          <div class="panel-body">
+            <div  class="form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-sm-4">Request</label>
+                <div class="col-sm-8">
+                  <toggle ng-model="$ctrl.data.artifacts.javaRequest" ng-change="$ctrl.changed('javaReq')" on="Sim" off="Não" size="btn-sm"></toggle>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-4">Response</label>
+                <div class="col-sm-8">
+                  <toggle ng-model="$ctrl.data.artifacts.javaResponse" ng-change="$ctrl.changed('javaRes')" on="Sim" off="Não" size="btn-sm"></toggle>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
