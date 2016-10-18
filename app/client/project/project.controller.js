@@ -15,6 +15,7 @@
     var message = null;
 
     var cancel = () => {
+      ProjectDataService.reset();
       this.$router.navigate(['Home']);
     }
 

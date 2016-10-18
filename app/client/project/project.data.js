@@ -7,26 +7,31 @@
     var data = {};
 
     var getData = () => {
-      return data;
+      return this.data;
     }
 
     var setData = (newData) => {
-      angular.copy(newData, data);
+      angular.copy(newData, this.data);
     }
 
     var getRequestFields = () => {
-      return data.requestFields;
+      return this.data.requestFields;
     }
 
     var getResponseFields = () => {
-      return data.responseFields;
+      return this.data.responseFields;
     }
 
+    var reset = () => {
+      this.data = {};
+    }
 
     angular.extend(ProjectDataService.prototype, {
+      data: data,
       getData: getData,
       getRequestFields: getRequestFields,
       getResponseFields: getResponseFields,
+      reset: reset,
       setData: setData
     });
   }
