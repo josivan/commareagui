@@ -23,6 +23,20 @@ ipcMain.on('save-project-async', (event, arg) => {
   })
 });
 
+ipcMain.on('generate-artifacts', (event, arg) => {
+  let result = {
+    status: 'OK',
+    artifacts: [
+      {
+        name: 'arquivo 1',
+        path: 'no caminho 1'
+      }
+    ]
+  };
+
+  event.sender.send('artifacts-generated', result);
+});
+
 ipcMain.on('open-project', (event, arg) => {
   event.returnValue = fh.abrir(arg);
 });

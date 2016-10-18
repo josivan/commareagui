@@ -1,10 +1,17 @@
 (function() {
   'use strict';
 
-  ArtifactsController.$inject = ['ProjectDataService'];
+  ArtifactsController.$inject = [
+    'ipcRenderer',
+    'ProjectDataService'
+  ];
 
-  function ArtifactsController(ProjectDataService) {
+  function ArtifactsController(ipcRenderer, ProjectDataService) {
     var data = ProjectDataService.getData();
+
+    var generate = () => {
+      ipcRenderer.send('generate-artifacts', this.data);
+    }
 
     var changed = (option) => {
       if (option.startsWith('xsd'))
@@ -31,7 +38,8 @@
 
     angular.extend(this, {
       changed: changed,
-      data: data
+      data: data,
+      generate: generate
     });
   }
 

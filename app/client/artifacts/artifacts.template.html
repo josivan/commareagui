@@ -44,5 +44,12 @@
         </div>
       </div>
     </div>
+    <div class="pull-right">
+      <div class="btn-group">
+        <button 
+          id="btnGenerate" class="btn btn-default" ng-click="$ctrl.generate()" type="button"
+          ng-if="$ctrl.data.artifacts.xsdRequest || $ctrl.data.artifacts.xsdResponse || $ctrl.data.artifacts.javaRequest || $ctrl.data.artifacts.javaResponse">Gerar Artefatos</button>
+      </div>
+    </div>
   </div>
 </div>

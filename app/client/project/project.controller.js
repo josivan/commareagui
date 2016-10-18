@@ -2,17 +2,22 @@
   'use strict';
 
   ProjectController.$inject = [
+    '$timeout',
     'ipcRenderer',
     'ProjectService',
     'ProjectDataService'
   ];
 
-  function ProjectController(ipcRenderer, ProjectService, ProjectDataService) {
+  function ProjectController($timeout, ipcRenderer, ProjectService, ProjectDataService) {
 
     // public
     var data = ProjectDataService.getData();
     var hasMessage = false;
     var message = null;
+
+    ipcRenderer.on('artifacts-generated', (event, result) => {
+      $timeout(_artifactsGenerated(result));
+    });
 
     var cancel = () => {
       ProjectDataService.reset();
@@ -71,6 +76,18 @@
       }
     }
 
+    var _artifactsGenerated = (result) => {
+      console.log('gerou -> ', result);
+      if (result.status == 'OK') {
+        var msg = 'Foram gerados os seguintes artefatos:\n';
+        result.artifacts.map(o => {
+          msg += `- ${o.name} no caminho ${o.path}.\n`;
+        });
+        this.hasMessage = true;
+        this.message
+      }
+    }
+
     angular.extend(this, {
       $routerOnActivate: _init,
       cancel: cancel,
@@ -85,4 +102,5 @@
   angular
     .module('commarea.project')
     .controller('ProjectController', ProjectController);
+
 })();
