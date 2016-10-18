@@ -18,31 +18,30 @@
       this.$router.navigate(['Home']);
     }
 
-    function save() {
-      message = {};
-      let result = ipcRenderer.sendSync('save-project', data);
-      hasMessage = true;
-      angular.copy(result, message);
-      data.action = 'Editar';
-      data.editionMode = true;
+    var save = () => { 
+      this.message = {};
+      let result = ipcRenderer.sendSync('save-project', this.data);
+      this.hasMessage = true;
+      angular.copy(result, this.message);
+      this.data.action = 'Editar';
+      this.data.editionMode = true;
     }
 
     var resetMessage = () => {
-      console.log('resetting message...', message);
-      hasMessage = false;
-      message = null;
+      this.hasMessage = false;
+      this.message = null;
     }
 
     //private
     var _openProject = (file) => {
       let dataFromFile = ipcRenderer.sendSync('open-project', file);
-      angular.copy(dataFromFile, data);
-      data.editionMode = true;
-      data.action = 'Editar';
+      angular.copy(dataFromFile, this.data);
+      this.data.editionMode = true;
+      this.data.action = 'Editar';
     }
 
     var _new = (action) => {
-      data.action = action;
+      this.data.action = action;
     }
 
     var _init = (next, previous) => {
