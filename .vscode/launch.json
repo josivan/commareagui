@@ -45,6 +45,15 @@
       "port": 5858,
       "sourceMaps": false,
       "outDir": null
+    },
+    {
+      "name": "Debug artifacts generation",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/artifacts-creation.tests.js",
+      "stopOnEntry": true,
+      "args": [],
+      "cwd": "${workspaceRoot}"
     }
   ]
 }
