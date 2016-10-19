@@ -1,21 +1,28 @@
+const fs      = require('fs');
+const path    = require('path');
 const builder = require('xmlbuilder');
+const agu     = require('./artifacts-generator.utils.app');
 
-const generate = (data) => {
+const generate = (_path, data) => {
   if (data.artifacts.xsdRequest) 
-    _generateXSDRequest(data);
+    _generateXSDRequest(path.normalize(path.join(_path, 'request')), data);
 
   if (data.artifacts.xsdResponse)
-    _generateXSDResponse(data);
+    _generateXSDResponse(path.normalize(path.join(_path, 'response')), data);
 }
 
-const _generateXSDRequest = (arg) => {
-  let sWriter = builder.streamWriter(process.stdout).set({pretty: true});
+const _generateXSDRequest = (where, arg) => {
+  agu.createPathIfRequired(where);
+  let ws = fs.createWriteStream(where + '/request.xsd');
+  let sWriter = builder.streamWriter(ws).set({pretty: true});
   let sequence = _createXSD(arg, 'In'); 
   sequence.doc().end(sWriter);
 }
 
-const _generateXSDResponse = (arg) => {
-  let sWriter = builder.streamWriter(process.stdout).set({pretty: true});
+const _generateXSDResponse = (where, arg) => {
+  agu.createPathIfRequired(where);
+  let ws = fs.createWriteStream(where + '/response.xsd');
+  let sWriter = builder.streamWriter(ws).set({pretty: true});
   let sequence = _createXSD(arg, 'Out'); 
   sequence.doc().end(sWriter);
 }

@@ -1,6 +1,6 @@
 const { ipcMain } = require('electron');
 const fh = require('./file-handler.app');
-const ag = require('./artifacts-generator.app');
+const ag = require('./artifacts/artifacts-generator.app');
 
 ipcMain.on('save-project', (event, arg) => {
   if (saveFile(arg)) {

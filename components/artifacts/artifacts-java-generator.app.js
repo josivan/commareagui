@@ -1,4 +1,4 @@
-const generate = (data) => {
+const generate = (_path, data) => {
   if (data.artifacts.javaRequest)
     _generateJavaRequest(data);
 
