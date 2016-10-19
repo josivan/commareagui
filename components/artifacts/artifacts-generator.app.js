@@ -4,11 +4,11 @@ const agu   = require('./artifacts-generator.utils.app');
 const axg   = require('./artifacts-xsd-generator.app');
 const ajg   = require('./artifacts-java-generator.app');
 
-const generate = (data) => {
+const generate = (sender, data) => {
   let _path = _checkPath(data.project.path, data.project.package)
   
-  axg.generate(_path, data);
-  ajg.generate(_path, data);
+  axg.generate(sender, _path, data);
+  ajg.generate(sender, _path, data);
 }
 
 const _checkPath = (_path, _package) => {
@@ -24,8 +24,6 @@ const _checkPath = (_path, _package) => {
   
   return result;
 }
-
-
 
 module.exports = {
   generate: generate

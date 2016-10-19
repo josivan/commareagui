@@ -79,12 +79,11 @@
     var _artifactsGenerated = (result) => {
       console.log('gerou -> ', result);
       if (result.status == 'OK') {
-        var msg = 'Foram gerados os seguintes artefatos:\n';
-        result.artifacts.map(o => {
-          msg += `- ${o.name} no caminho ${o.path}.\n`;
-        });
         this.hasMessage = true;
-        this.message
+        this.message = {
+          type: 'success',
+          text: `${result.artifact.name} gerado em ${result.artifact.path}.`
+        }
       }
     }
 

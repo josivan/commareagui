@@ -3,28 +3,42 @@ const path    = require('path');
 const builder = require('xmlbuilder');
 const agu     = require('./artifacts-generator.utils.app');
 
-const generate = (_path, data) => {
+const generate = (sender, _path, data) => {
   if (data.artifacts.xsdRequest) 
-    _generateXSDRequest(path.normalize(path.join(_path, 'request')), data);
+    _generateXSDRequest(sender, path.normalize(path.join(_path, 'request')), data);
 
   if (data.artifacts.xsdResponse)
-    _generateXSDResponse(path.normalize(path.join(_path, 'response')), data);
+    _generateXSDResponse(sender, path.normalize(path.join(_path, 'response')), data);
 }
 
-const _generateXSDRequest = (where, arg) => {
+const _generateXSDRequest = (sender, where, arg) => {
   agu.createPathIfRequired(where);
-  let ws = fs.createWriteStream(where + '/request.xsd');
-  let sWriter = builder.streamWriter(ws).set({pretty: true});
-  let sequence = _createXSD(arg, 'In'); 
-  sequence.doc().end(sWriter);
+  let f = where + '/request.xsd';
+  let out = _createXSD(arg, 'In');
+
+  fs.writeFile(f, out, (err) => {
+    if (err) {
+      sender.send('artifacts-generated', agu.createErrorMessage('request.xsd', where));
+    }
+    else {
+      sender.send('artifacts-generated', agu.createSuccessMessage('request.xsd', where));
+    }
+  });
 }
 
-const _generateXSDResponse = (where, arg) => {
+const _generateXSDResponse = (sender, where, arg) => {
   agu.createPathIfRequired(where);
-  let ws = fs.createWriteStream(where + '/response.xsd');
-  let sWriter = builder.streamWriter(ws).set({pretty: true});
-  let sequence = _createXSD(arg, 'Out'); 
-  sequence.doc().end(sWriter);
+  let f = where + '/response.xsd';
+  let out = _createXSD(arg, 'Out');
+  
+  fs.writeFile(f, out, (err) => {
+    if (err) {
+      sender.send('artifacts-generated', agu.createErrorMessage('response.xsd', where));
+    }
+    else {
+      sender.send('artifacts-generated', agu.createSuccessMessage('response.xsd', where));
+    }
+  });
 }
 
 const _createXSD = (data, operation) => {
@@ -49,7 +63,7 @@ const _createXSD = (data, operation) => {
     sequence.importDocument(field);
   });
 
-  return sequence;
+  return sequence.doc().end({pretty: true});
 }
 
 module.exports = {
