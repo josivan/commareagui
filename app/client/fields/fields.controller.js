@@ -25,9 +25,9 @@
 
     var _newType = () => {
       let result = {
-        name: data.name,
-        type: data.selectedType,
-        nullable: data.nullable
+        name: this.data.name,
+        type: this.data.selectedType,
+        nullable: this.data.nullable
       };
 
       _resetType();

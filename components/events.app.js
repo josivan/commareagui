@@ -1,5 +1,6 @@
-const {ipcMain} = require('electron');
-const fh = require('./file-handler.app.js');
+const { ipcMain } = require('electron');
+const fh = require('./file-handler.app');
+const artifact = require('./artifacts-generator.app');
 
 ipcMain.on('save-project', (event, arg) => {
   if (saveFile(arg)) {
@@ -33,6 +34,9 @@ ipcMain.on('generate-artifacts', (event, arg) => {
       }
     ]
   };
+
+  artifact.generateRequestXSD(arg);
+  artifact.generateResponseXSD(arg);  
 
   event.sender.send('artifacts-generated', result);
 });
