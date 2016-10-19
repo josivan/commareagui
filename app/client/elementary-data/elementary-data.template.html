@@ -4,18 +4,18 @@
       <div class="form-group">
         <label for="prjName" class="col-sm-2 control-label">Nome</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="prjName" placeholder="Nome do Projeto" ng-model="$ctrl.data.prjName" 
+          <input type="text" class="form-control" id="prjName" placeholder="Nome do Projeto" ng-model="$ctrl.data.project.name" 
             uib-tooltip="Nome projeto que será usado no arquivo de definição. Não pode ser alterado."
             ng-hide="$ctrl.data.action == 'Editar'">
           <p uib-tooltip="Nome projeto que será usado no arquivo de definição. Não pode ser alterado."
             ng-show="$ctrl.data.action == 'Editar'"
-            class="form-control-static">{{$ctrl.data.prjName}}</p>
+            class="form-control-static">{{$ctrl.data.project.name}}</p>
         </div>
       </div>
       <div class="form-group">
         <label for="prjName" class="col-sm-2 control-label">Pacote</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="prjPackage" placeholder="Pacote Padrão" ng-model="$ctrl.data.prjPackage"
+          <input type="text" class="form-control" id="prjPackage" placeholder="Pacote Padrão" ng-model="$ctrl.data.project.package"
             uib-tooltip="O pacote padrão a ser usado nos stubs gerados.">
         </div>
       </div>
@@ -23,7 +23,7 @@
         <label for="prjName" class="col-sm-2 control-label">Pasta</label>
         <div class="col-sm-10">
           <div class="input-group">
-            <div class="input-group-addon full-width read-only" ng-click="$ctrl.selectPath()" uib-tooltip="O caminho no sistema de arquivos para geração dos stubs. Clique para selecionar.">{{$ctrl.data.prjPath ? $ctrl.data.prjPath : 'Não definido'}}</div>
+            <div class="input-group-addon full-width read-only" ng-click="$ctrl.selectPath()" uib-tooltip="O caminho no sistema de arquivos para geração dos stubs. Clique para selecionar.">{{$ctrl.data.project.path ? $ctrl.data.project.path : 'Não definido'}}</div>
             <div class="input-group-btn">
               <button type="button" class="btn btn-default" aria-label="Selecionar caminho" ng-click="$ctrl.selectPath()"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></button>
             </div>

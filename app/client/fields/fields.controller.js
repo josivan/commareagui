@@ -79,7 +79,7 @@
       data: data,
       dataTypes: dataTypes,
       deleteField: deleteField,
-      projectName: data['prjName'],
+      projectName: data.project.name,
       requestFields: requestFields,
       responseFields: responseFields
     });

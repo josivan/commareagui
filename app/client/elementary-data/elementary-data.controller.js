@@ -13,10 +13,10 @@
       let selectedPath = ElementaryDataService.getSelectedPath();
     
       if (selectedPath) {
-        data.prjPath = selectedPath[0];
+        data.project.path = selectedPath[0];
       }
       else {
-        delete data["prjPath"];
+        delete data.project["path"];
       }
     }
 
