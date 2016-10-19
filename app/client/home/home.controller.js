@@ -13,11 +13,11 @@
     });
 
     //public
-    function newProject() {
+    var newProject = () => {
       this.$router.navigate(['Project', {action: 'Novo'}]);
     }
 
-    function openProject() {
+    var openProject = () => {
       this.$router.navigate(['Project', {action: 'Editar'}]);
     }
 
