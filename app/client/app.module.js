@@ -14,11 +14,12 @@
     $urlRouterProvider.otherwise('/');
 
     var appState = {
+      name: 'app',
       url: '/',
       component: 'app'
     };
 
-    $stateProvider.state('app', appState);
+    $stateProvider.state(appState);
   }
 
 })();

@@ -2,7 +2,8 @@
   'use strict';
 
   var appComponent = {
-    templateUrl: 'client/app.template.html'
+    templateUrl: 'client/app.template.html',
+    controller: 'AppController'
   }
   
   angular
