@@ -8,12 +8,7 @@
     <title>Comm Area GUI</title>
   </head>
   <body>
-    <div class="container">
-      <div class="page-header">
-        <h1>Commarea GUI - <small>Ferramenta para geração de PDC</small></h1>
-      </div>
-      <div class="panel-body"><app></app></div>
-    </div>
+    <app></app>
     <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
     <script>
       'use strict';
@@ -32,15 +27,20 @@
     -->
     <script type="text/javascript" src="../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script type="text/javascript" src="../node_modules/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.js"></script>
-    <script src="client/commarea.app.js"></script>
+    
+    <script src="client/app.module.js"></script>
+    <script src="client/app.component.js"></script>
+
+    <script src="client/home/home.module.js"></script>
+    <script src="client/home/home.controller.js"></script>
+    <script src="client/home/home.component.js"></script>
+
+<!--    
     <script src="client/app.component.js"></script>
 
     <script src="client/components/components.module.js"></script>
     <script src="client/components/capitalize.directive.js"></script>
 
-    <script src="client/home/home.module.js"></script>
-    <script src="client/home/home.controller.js"></script>
-    <script src="client/home/home.component.js"></script>
 
     <script src="client/elementary-data/elementary-data.module.js"></script>
     <script src="client/elementary-data/elementary-data.service.js"></script>
@@ -60,5 +60,6 @@
     <script src="client/project/project.service.js"></script>
     <script src="client/project/project.controller.js"></script>
     <script src="client/project/project.component.js"></script>
+-->
   </body>
 </html>

@@ -5,7 +5,6 @@
     .module('commarea.home')
     .component('home', {
       templateUrl: 'client/home/home.html',
-      controller: 'HomeController',
-      bindings: { $router: '<' }
+      controller: 'HomeController'
     });
 })();

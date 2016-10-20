@@ -1,7 +1,10 @@
 (function() {
   'use strict';
 
-  HomeController.$inject = ['$timeout', 'ipcRenderer'];
+  HomeController.$inject = [
+    '$timeout', 
+    'ipcRenderer'
+  ];
 
   function HomeController($timeout, ipcRenderer) {
     //private
@@ -14,11 +17,11 @@
 
     //public
     var newProject = () => {
-      this.$router.navigate(['Project', {action: 'Novo'}]);
+      //this.$router.navigate(['Project', {action: 'Novo'}]);
     }
 
     var openProject = () => {
-      this.$router.navigate(['Project', {action: 'Editar'}]);
+      //this.$router.navigate(['Project', {action: 'Editar'}]);
     }
 
     angular.extend(this, {
@@ -26,6 +29,7 @@
       openProject: openProject
     });
   }
+
   angular
     .module('commarea.home')
     .controller('HomeController', HomeController);
