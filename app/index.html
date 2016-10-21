@@ -8,7 +8,7 @@
     <title>Comm Area GUI</title>
   </head>
   <body>
-    <app></app>
+    <ui-view name="app"></ui-view>
     <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
     <script>
       'use strict';
@@ -26,10 +26,10 @@
     <script type="text/javascript" src="../node_modules/@angular/router/angular1/angular_1_router.js"></script>
     -->
     <script type="text/javascript" src="../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="client/libs/routeToComponents.js"></script>
     <script type="text/javascript" src="../node_modules/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.js"></script>
     
     <script src="client/app.module.js"></script>
-    <script src="client/app.controller.js"></script>
     <script src="client/app.component.js"></script>
 
     <script src="client/home/home.module.js"></script>

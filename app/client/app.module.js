@@ -4,7 +4,7 @@
   angular
     .module('commarea', [
       'ui.router',
-      'commarea.home'
+      'ui.router.components'
     ])
     .config(Config);
 
@@ -16,8 +16,12 @@
     var appState = {
       name: 'app',
       url: '/',
-      component: 'app'
-    };
+      views: {
+        'app@': {
+          component: 'app'
+        }
+      }
+    }
 
     $stateProvider.state(appState);
   }
