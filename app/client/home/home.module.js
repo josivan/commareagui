@@ -6,18 +6,17 @@
   function Config($stateProvider) {
   
     var homeState = {
-      name: 'home',
+      name: 'app.home',
       url: '/home',
       component: 'home'
     }
 
+    console.log('montou home');
     $stateProvider.state(homeState);
   }
 
   angular
-    .module('commarea.home', [
-      'angular-electron'
-    ])
+    .module('commarea.home', [])
     .config(Config);
 
 })();

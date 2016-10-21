@@ -4,7 +4,9 @@
   angular
     .module('commarea', [
       'ui.router',
-      'ui.router.components'
+      'ui.router.components',
+      'angular-electron',
+      'commarea.home'
     ])
     .config(Config);
 
@@ -23,6 +25,7 @@
       }
     }
 
+    console.log('montou app');
     $stateProvider.state(appState);
   }
 
