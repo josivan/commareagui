@@ -11,12 +11,13 @@
       component: 'home'
     }
 
-    console.log('montou home');
     $stateProvider.state(homeState);
   }
 
   angular
-    .module('commarea.home', [])
+    .module('commarea.home', [
+      'commarea.project'
+    ])
     .config(Config);
 
 })();

@@ -4,7 +4,9 @@
   ProjectDataService.$inject = [];
   function ProjectDataService() {
 
-    var data = {};
+    var data = {
+      project: {}
+    };
 
     var getData = () => {
       return this.data;

@@ -3,10 +3,11 @@
 
   HomeController.$inject = [
     '$timeout', 
+    '$state',
     'ipcRenderer'
   ];
 
-  function HomeController($timeout, ipcRenderer) {
+  function HomeController($timeout, $state, ipcRenderer) {
     //private
     ipcRenderer.on('new-project', () => {
       $timeout(newProject());
@@ -17,11 +18,11 @@
 
     //public
     var newProject = () => {
-      //this.$router.navigate(['Project', {action: 'Novo'}]);
+      $state.go('app.project', {action: 'Novo'});
     }
 
     var openProject = () => {
-      //this.$router.navigate(['Project', {action: 'Editar'}]);
+      $state.go('app.project', {action: 'Editar'});
     }
 
     angular.extend(this, {

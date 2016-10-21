@@ -25,7 +25,6 @@
       }
     }
 
-    console.log('montou app');
     $stateProvider.state(appState);
   }
 

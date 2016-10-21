@@ -46,18 +46,16 @@
       this.data.action = 'Editar';
     }
 
-    var _new = (action) => {
-      this.data.action = action;
+    var _new = () => {
+      this.data.action = this.action;
     }
 
-    var _init = (next, previous) => {
-      let action = next.params.action;
-     
-      if (action == 'Editar') {
+    var _init = () => {
+      if (this.action == 'Editar') {
           _edit();
       }
-      else if (action == 'Novo') {
-        _new(action);
+      else if (this.action == 'Novo') {
+        _new();
       }
     }
 
@@ -88,7 +86,7 @@
     }
 
     angular.extend(this, {
-      $routerOnActivate: _init,
+      $postLink: _init,
       cancel: cancel,
       data: data,
       hasMessage: hasMessage,
