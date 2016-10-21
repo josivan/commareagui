@@ -50,12 +50,21 @@
       ipcRenderer.send('load-data-type');
     }
 
-    var addType = (form) => {
-      let list = _list();
-      let nType = _newType();
-      nType.id = list.length; 
-      list.push(nType);
-      form.$setPristine();
+    var addField = (form) => {
+      if (_containsSameField()) {
+        console.log('exibir erro');
+      }
+      else {
+        let list = _list();
+        let nType = _newType();
+        nType.id = list.length; 
+        list.push(nType);
+        form.$setPristine();
+      }
+    }
+
+    var _containsSameField = () => {
+      return _list().some(e => e.name == this.data.name);
     }
 
     var _list = () => {
@@ -74,7 +83,7 @@
 
     angular.extend(this, {
       $onInit: _init,
-      addType: addType,
+      addField: addField,
       clickOnTab: clickOnTab,
       data: data,
       dataTypes: dataTypes,

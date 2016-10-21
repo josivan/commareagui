@@ -3,12 +3,13 @@
 
   ProjectController.$inject = [
     '$timeout',
+    '$state',
     'ipcRenderer',
     'ProjectService',
     'ProjectDataService'
   ];
 
-  function ProjectController($timeout, ipcRenderer, ProjectService, ProjectDataService) {
+  function ProjectController($timeout, $state, ipcRenderer, ProjectService, ProjectDataService) {
 
     // public
     var data = ProjectDataService.getData();
@@ -21,7 +22,7 @@
 
     var cancel = () => {
       ProjectDataService.reset();
-      this.$router.navigate(['Home']);
+      $state.go('app.home');
     }
 
     var save = () => { 
