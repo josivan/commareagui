@@ -4,5 +4,6 @@
 /target/
 /node_modules/
 /typings/
-npm-debug.log
+npm-debug.log.*
+*.log
 *.caproject
