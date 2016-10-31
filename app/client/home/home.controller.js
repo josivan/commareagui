@@ -4,10 +4,11 @@
   HomeController.$inject = [
     '$timeout', 
     '$state',
-    'ipcRenderer'
+    'ipcRenderer',
+    'HomeService'
   ];
 
-  function HomeController($timeout, $state, ipcRenderer) {
+  function HomeController($timeout, $state, ipcRenderer, HomeService) {
     //private
     ipcRenderer.on('new-project', () => {
       $timeout(newProject());

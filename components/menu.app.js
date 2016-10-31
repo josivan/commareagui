@@ -29,7 +29,9 @@ const template = [
     label: '&Ferramentas',
     submenu: [
       {
-        label: '&Opções'
+        label: '&Opções',
+        accelerator: 'CmdOrCtrl+O',
+        click: actions.actionOptions
       }
     ]
   }
