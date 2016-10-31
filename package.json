@@ -27,7 +27,7 @@
     "jquery": "^1.9.1",
     "mkdirp": "^0.5.1",
     "ng-confirm": "^1.1.0",
-    "node-java": "^1.0.1",
+    "shelljs": "^0.7.4",
     "xmlbuilder": "^8.2.2"
   },
   "devDependencies": {

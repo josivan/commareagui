@@ -7,7 +7,7 @@ const ajg   = require('./artifacts-java-generator.app');
 const generate = (sender, data) => {
   let _path = _checkPath(data.project.path, data.project.package)
   
-  axg.generate(sender, _path, data);
+  // axg.generate(sender, _path, data);
   ajg.generate(sender, _path, data);
 }
 
