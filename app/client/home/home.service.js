@@ -7,18 +7,25 @@
 
   HomeService.$inject = [
     '$timeout', 
+    '$state',
     '$uibModal',
     'ipcRenderer'
   ];
 
-  function HomeService($timeout, $uibModal, ipcRenderer) {
+  function HomeService($timeout, $state, $uibModal, ipcRenderer) {
+
     ipcRenderer.on('show-options', () => {
-      console.log('opções no serviço');
       this.showOptions();
     });
 
     this.showOptions = () => {
-      console.log('exibir opções');
+      
+      let dialogDefinitions = {
+        backdrop: 'static',
+        component: 'options'
+      }
+
+      $uibModal.open(dialogDefinitions);
     }
   }
 

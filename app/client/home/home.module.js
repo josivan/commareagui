@@ -16,7 +16,8 @@
 
   angular
     .module('commarea.home', [
-      'commarea.project'
+      'commarea.project',
+      'commarea.options'
     ])
     .config(Config);
 
