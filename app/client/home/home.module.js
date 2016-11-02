@@ -16,6 +16,7 @@
 
   angular
     .module('commarea.home', [
+      'ui.bootstrap.modal',
       'commarea.project',
       'commarea.options'
     ])
