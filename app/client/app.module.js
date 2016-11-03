@@ -3,6 +3,7 @@
 
   angular
     .module('commarea', [
+      'ngAnimate',
       'ui.router',
       'ui.router.components',
       'angular-electron',

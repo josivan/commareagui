@@ -12,8 +12,18 @@
       console.log('select java');
     }
 
+    let cancel = () => {
+      console.log('cancel');
+    }
+
+    let save = () => {
+      console.log('save');
+    }
+
     angular.extend(this, {
+      cancel: cancel,
       data: data,
+      save: save,
       selectJavaExe: selectJavaExe
     });
   }
