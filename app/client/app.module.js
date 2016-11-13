@@ -4,6 +4,7 @@
   angular
     .module('commarea', [
       'ngAnimate',
+      'ngSanitize',
       'ui.router',
       'ui.router.components',
       'angular-electron',

@@ -14,6 +14,7 @@
 
     let cancel = () => {
       console.log('cancel');
+      close();
     }
 
     let save = () => {

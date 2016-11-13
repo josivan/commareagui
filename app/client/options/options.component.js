@@ -3,7 +3,10 @@
 
   let OptionsComponent = {
     templateUrl: 'client/options/options.template.html',
-    controller: 'OptionsController'
+    controller: 'OptionsController',
+    bindings: {
+      close: '&'
+    }
   }
 
   angular
