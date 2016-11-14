@@ -29,14 +29,26 @@ ipcMain.on('generate-artifacts', (event, arg) => {
 });
 
 ipcMain.on('open-project', (event, arg) => {
-  event.returnValue = fh.abrir(arg);
+  event.returnValue = fh.openProject(arg);
 });
 
 ipcMain.on('load-data-type', (event, arg) => {
   event.sender.send('loaded-data-type', fh.loadDataType());
 });
 
-var saveFile = (arg) => {
-  fh.criar(arg); 
+ipcMain.on('load-global-options', (event) => {
+  event.returnValue = fh.loadOptions();
+});
+
+ipcMain.on('save-global-options', (event, arg) => {
+  fh.saveOptions(arg);
+  event.returnValue = {
+    type: 'success',
+    text: 'Opções Globais foram Salvas'
+  }
+});
+
+let saveFile = (arg) => {
+  fh.createProject(arg); 
   return true;
 }

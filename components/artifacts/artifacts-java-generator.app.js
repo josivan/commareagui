@@ -1,10 +1,24 @@
 var spawn = require('child_process').spawn;
+const op = require.main.require('./components/file-handler.app').loadOptions();
 
 const javaCommand = 'C:\\developer\\Java\\jdk1.8.0_77\\bin\\java';
 const javaCP = 'C:\\aporte-bradesco-celular\\GeradorCommarea\\lib\\castor-1.0.jar;C:\\aporte-bradesco-celular\\GeradorCommarea\\lib\\xercesImpl-2.4.0.jar';
 const requestXSD = 'C:\\temp\\josivan\\teste\\estrutura\\top\\br\\com\\bradesco\\web\\previdencia\\service\\data\\commarea\\aporte\\cancela\\response\\response.xsd';
 
 const generate = (sender, _path, data) => {
+
+  let opIsOk = Boolean(op.castor) && Boolean(op.javaPath) && Boolean(op.xerces);
+
+  if (!opIsOk) {
+    sender.send('artifacts-generated', {
+      status: 'ERROR',
+      artifact: {
+        name: 'fileName',
+        path: '_path'
+      }
+    })
+  }
+
   if (data.artifacts.javaRequest)
     _generateJavaRequest(data);
 

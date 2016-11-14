@@ -1,15 +1,5 @@
-<!--
-
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-      -->
 <div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$ctrl.cancel()"><span aria-hidden="true">&times;</span></button>
   <h4 class="modal-title">Opções</h4>
 </div>
 <div class="modal-body">
@@ -32,24 +22,24 @@
         <div class="form-group">
           <label for="javaExe">Caminho do Arquivo castor-1.0.jar</label>
           <div class="input-group">
-            <div class="input-group-addon full-width read-only" ng-click="$ctrl.selectJavaExe()" 
-              uib-tooltip="Caminho do arquivo java.exe no Sistema de Arquivos. Clique para selecionar.">{{$ctrl.data.javaPath ? $ctrl.data.javaPath : 'Não definido'}}
+            <div class="input-group-addon full-width read-only" ng-click="$ctrl.selectCastor()" 
+              uib-tooltip="Caminho do arquivo castor-1.0.jar no Sistema de Arquivos. Clique para selecionar.">{{$ctrl.data.castor ? $ctrl.data.castor : 'Não definido'}}
             </div>
             <div class="input-group-btn">
-              <button type="button" class="btn btn-default" aria-label="Selecionar caminho" ng-click="$ctrl.selectJavaExe()">
+              <button type="button" class="btn btn-default" aria-label="Selecionar caminho" ng-click="$ctrl.selectCastor()">
                 <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
               </button>
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label for="javaExe">Caminho do Arquivo xercesImpl-2.4.0</label>
+          <label for="javaExe">Caminho do Arquivo xercesImpl-2.4.0.jar</label>
           <div class="input-group">
-            <div class="input-group-addon full-width read-only" ng-click="$ctrl.selectJavaExe()" 
-              uib-tooltip="Caminho do arquivo java.exe no Sistema de Arquivos. Clique para selecionar.">{{$ctrl.data.javaPath ? $ctrl.data.javaPath : 'Não definido'}}
+            <div class="input-group-addon full-width read-only" ng-click="$ctrl.selectXerces()" 
+              uib-tooltip="Caminho do arquivo xercesImpl-2.4.0.jar no Sistema de Arquivos. Clique para selecionar.">{{$ctrl.data.xerces ? $ctrl.data.xerces : 'Não definido'}}
             </div>
             <div class="input-group-btn">
-              <button type="button" class="btn btn-default" aria-label="Selecionar caminho" ng-click="$ctrl.selectJavaExe()">
+              <button type="button" class="btn btn-default" aria-label="Selecionar caminho" ng-click="$ctrl.selectXerces()">
                 <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
               </button>
             </div>
@@ -62,6 +52,6 @@
 <div class="modal-footer">
   <div class="pull-right">
     <div class="btn-group"><button id="btnSave" class="btn btn-default" ng-click="$ctrl.save()" type="submit">Salvar</button></div>
-    <div class="btn-group"><button id="btnCancel" class="btn btn-default" ng-click="$ctrl.cancel()" type="reset">Cancelar</button></div>
+    <div class="btn-group"><button id="btnCancel" class="btn btn-default" ng-click="$ctrl.cancel()" type="button">Cancelar</button></div>
   </div>
 </div>
