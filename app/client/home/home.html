@@ -1,12 +1,26 @@
 <div class="panel panel-borderless">
-  <div class="btn-group">
+  <div class="btn-group hidden-xs">
     <button id="btnNovo" class="btn btn-default" ng-click="$ctrl.newProject()">Novo</button>
   </div>
-  <div class="btn-group">
+  <div class="btn-group hidden-xs">
     <button id="btnAbrir" class="btn btn-default" ng-click="$ctrl.openProject()">Abrir</button>
+  </div>
+
+  <div class="visible-xs-block">
+    
+    <div class="col-xs-6">
+      <div class="btn thumbnail" ng-click="$ctrl.newProject()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="btn thumbnail" ng-click="$ctrl.openProject()">
+        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="jumbotron">
-  <p>Clique em Novo para criar um novo projeto commare ou clique em Abrir para abri um projeto existente.</p>
+<div class="jumbotron hidden-xs">
+  <p>Clique em Novo para criar um novo projeto commarea ou clique em Abrir para abrir um projeto commarea existente.</p>
 </div>
