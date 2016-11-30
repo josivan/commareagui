@@ -1,8 +1,7 @@
+var path = require('path');
 var spawn = require('child_process').spawn;
 const op = require.main.require('./components/file-handler.app').loadOptions();
 
-const javaCommand = 'C:\\developer\\Java\\jdk1.8.0_77\\bin\\java';
-const javaCP = 'C:\\aporte-bradesco-celular\\GeradorCommarea\\lib\\castor-1.0.jar;C:\\aporte-bradesco-celular\\GeradorCommarea\\lib\\xercesImpl-2.4.0.jar';
 const requestXSD = 'C:\\temp\\josivan\\teste\\estrutura\\top\\br\\com\\bradesco\\web\\previdencia\\service\\data\\commarea\\aporte\\cancela\\response\\response.xsd';
 
 const generate = (sender, _path, data) => {
@@ -28,15 +27,15 @@ const generate = (sender, _path, data) => {
 
 const _generateJavaRequest = (data) => {
   // java -cp lib\castor-1.0.jar;lib\xercesImpl-2.4.0.jar org.exolab.castor.builder.SourceGenerator -i %1 -package %2
-  var child = spawn(javaCommand, [
+  var child = spawn(op.javaPath, [
     '-cp', 
-    javaCP,
+    mountClassPath(),
     'org.exolab.castor.builder.SourceGenerator',
     '-i', 
     requestXSD,
     '-package',
-    'pacote.josivan'
-    ]);
+    data.project.package
+  ]);
 
   var resultStdout = child.stdout;
   var resultStderr = child.stderr;
@@ -53,6 +52,10 @@ const _generateJavaRequest = (data) => {
   resultStdout.on('readable', () => { console.log('out readable'); });
 
   resultStderr.on('data', (data) => { console.log('err data', data.toString()); });
+}
+
+let mountClassPath = () => {
+  return op.castor.concat(path.delimiter).concat(op.xerces);
 }
 
 const _generateJavaResponse = (data) => {
