@@ -88,7 +88,7 @@
       data: data,
       dataTypes: dataTypes,
       deleteField: deleteField,
-      projectName: data.project.name,
+      projectName: data.project.name || '',
       requestFields: requestFields,
       responseFields: responseFields
     });
