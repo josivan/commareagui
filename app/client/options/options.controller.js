@@ -28,6 +28,16 @@
       }
     }
 
+    let _selectLogging = () => {
+      let path = OptionsService.getSelectedFile('commons-logging.jar', 'jar');
+      if (path) {
+        this.data.logging = path[0];
+      }
+      else {
+        delete this.data['logging'];
+      }
+    }
+
     let _selectXerces = () => {
       let path = OptionsService.getSelectedFile('xercesImpl-2.4.0.jar', 'jar');
       if (path) {
@@ -57,6 +67,7 @@
       data: data,
       save: _save,
       selectCastor: _selectCastor,
+      selectLogging: _selectLogging,
       selectJavaExe: _selectJavaExe,
       selectXerces: _selectXerces
     });

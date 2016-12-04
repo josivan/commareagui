@@ -1,6 +1,7 @@
-var path = require('path');
-var spawn = require('child_process').spawn;
-const op = require.main.require('./components/file-handler.app').loadOptions();
+const path  = require('path');
+const spawn = require('child_process').spawn;
+const agu   = require('./artifacts-generator.utils.app');
+const op    =  require.main.require('./components/file-handler.app').loadOptions();
 
 const requestXSD = 'C:\\temp\\josivan\\teste\\estrutura\\top\\br\\com\\bradesco\\web\\previdencia\\service\\data\\commarea\\aporte\\cancela\\response\\response.xsd';
 
@@ -26,15 +27,24 @@ const generate = (sender, _path, data) => {
 }
 
 const _generateJavaRequest = (data) => {
-  // java -cp lib\castor-1.0.jar;lib\xercesImpl-2.4.0.jar org.exolab.castor.builder.SourceGenerator -i %1 -package %2
+  _generateJavaCode(data, mountXSDRequestPath(data));
+}
+
+const _generateJavaResponse = (data) => {
+  _generateJavaCode(data, mountXSDResponsePath(data));
+}
+
+const _generateJavaCode = (data, xsdPath) => {
   var child = spawn(op.javaPath, [
     '-cp', 
     mountClassPath(),
     'org.exolab.castor.builder.SourceGenerator',
     '-i', 
-    requestXSD,
+    xsdPath,
     '-package',
-    data.project.package
+    data.project.package,
+    '-dest',
+    data.project.path
   ]);
 
   var resultStdout = child.stdout;
@@ -58,7 +68,26 @@ let mountClassPath = () => {
   return op.castor.concat(path.delimiter).concat(op.xerces);
 }
 
-const _generateJavaResponse = (data) => {
+let mountXSDRequestPath = (data) => {
+  return mountXSDPath(data)
+    .concat(path.sep)
+    .concat('request')
+    .concat(path.sep)
+    .concat('request.xsd');
+}
+
+let mountXSDResponsePath = (data) => {
+  return mountXSDPath(data)
+    .concat(path.sep)
+    .concat('response')
+    .concat(path.sep)
+    .concat('response.xsd');
+}
+
+let mountXSDPath = (data) => {
+  return agu.packageToPath(data.project.path)
+    .concat(path.sep)
+    .concat(agu.packageToPath(data.project.package));
 }
 
 module.exports = {

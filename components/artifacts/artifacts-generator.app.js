@@ -18,7 +18,8 @@ const _checkPath = (_path, _package) => {
   }
 
   if (_package) {
-    let pToPack = path.join(_path || '.', _package.replace(/\./g, '/')); 
+    let pathToPackage = agu.packageToPath(_package);
+    let pToPack = path.join(_path || '.', pathToPackage); 
     result = agu.createPathIfRequired(pToPack);
   }
   

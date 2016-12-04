@@ -1,5 +1,6 @@
-const fs = require('fs');
-const mkdirp = require('mkdirp');
+const fs      = require('fs');
+const path    = require('path');
+const mkdirp  = require('mkdirp');
 
 const createErrorMessage = (fileName, _path) => {
   return _createMessage(false, fileName, _path);
@@ -27,8 +28,13 @@ const createPathIfRequired = (_path) => {
   return _path;
 }
 
+const packageToPath = (_package) => {
+  return _package.replace(/\./g, path.sep);
+}
+
 module.exports = {
   createErrorMessage: createErrorMessage,
   createSuccessMessage: createSuccessMessage,
-  createPathIfRequired: createPathIfRequired
+  createPathIfRequired: createPathIfRequired,
+  packageToPath: packageToPath
 }
