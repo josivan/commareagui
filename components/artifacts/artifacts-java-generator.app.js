@@ -27,14 +27,20 @@ const generate = (sender, _path, data) => {
 }
 
 const _generateJavaRequest = (data) => {
-  _generateJavaCode(data, mountXSDRequestPath(data));
+  _generateJavaCode(
+    data, 
+    mountXSDRequestPath(data), 
+    data.project.package.concat('.request'));
 }
 
 const _generateJavaResponse = (data) => {
-  _generateJavaCode(data, mountXSDResponsePath(data));
+  _generateJavaCode(
+    data, 
+    mountXSDResponsePath(data), 
+    data.project.package.concat('.response'));
 }
 
-const _generateJavaCode = (data, xsdPath) => {
+const _generateJavaCode = (data, xsdPath, package) => {
   var child = spawn(op.javaPath, [
     '-cp', 
     mountClassPath(),
@@ -42,7 +48,7 @@ const _generateJavaCode = (data, xsdPath) => {
     '-i', 
     xsdPath,
     '-package',
-    data.project.package,
+    package,
     '-dest',
     data.project.path
   ]);
