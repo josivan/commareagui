@@ -33,7 +33,9 @@
     }
 
     var reset = () => {
-      this.data = {};
+      this.data = {
+        project: {}
+      };
     }
 
     angular.extend(ProjectDataService.prototype, {
