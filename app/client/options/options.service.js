@@ -26,7 +26,10 @@
     }
 
     this.writeGlobalOptions = (data) => {
-      ipcRenderer.sendSync('save-global-options', data);
+      return new Promise((resolve, reject) => {
+        ipcRenderer.sendSync('save-global-options', data);
+        resolve();
+      });
     }
 
     this.loadGlobalOptions = () => {

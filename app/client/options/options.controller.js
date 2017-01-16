@@ -53,8 +53,12 @@
     }
 
     let _save = () => {
-      OptionsService.writeGlobalOptions(this.data);
-      this.close();
+      OptionsService.writeGlobalOptions(this.data)
+        .then(() => {
+          console.log('teste no then');
+          this.close()
+        })
+        .catch();
     }
 
     let _init = () => {
